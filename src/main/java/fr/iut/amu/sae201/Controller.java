@@ -11,6 +11,11 @@ public class Controller {
     @FXML
     private Label welcomeText;
 
+    @FXML
+    private void ValiderMenuPrincipal(){
+
+    }
+
     private void loadCsv(){
         //Chargement fichier csv
         try {
