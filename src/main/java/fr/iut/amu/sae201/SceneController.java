@@ -1,13 +1,19 @@
 package fr.iut.amu.sae201;
+
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 
 public class SceneController {
-
     private MainApp mainApp;
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
+    }
+
+    @FXML
+    public void LireCSV() {
+        CSVReader read = new CSVReader("/amuhome/a22021019/R202/TPTD2/SAE201/SisFrance_seismes.csv");
+        read.Lire();
     }
 
     @FXML

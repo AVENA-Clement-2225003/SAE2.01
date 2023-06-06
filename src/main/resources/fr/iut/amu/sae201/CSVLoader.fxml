@@ -124,7 +124,7 @@
                         <Insets left="100.0" top="100.0" />
                     </VBox.margin>
                 </GridPane>
-                <Button mnemonicParsing="false" prefWidth="150.0" text="Confirmer">
+                <Button mnemonicParsing="false" prefWidth="150.0" text="Confirmer" onAction="#LireCSV">
                     <font>
                         <Font name="Carlito Italic" size="20.0" />
                     </font>
