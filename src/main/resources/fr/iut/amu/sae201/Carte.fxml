@@ -99,7 +99,7 @@
                     </VBox.margin>
                 </VBox>
                 <VBox prefHeight="510.0" prefWidth="240.0" style="-fx-background-color: #d9d9d9" styleClass="EvenementsBas" />
-                <Label text="Paramètres avancés" textFill="#d9d9d9">
+                <Label text="Paramètres avancés" textFill="#d9d9d9" onMouseClicked="#FenetreParametres">
                     <font>
                         <Font name="Carlito" size="19.0" />
                     </font>

@@ -1,7 +1,14 @@
 package fr.iut.amu.sae201;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,6 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SceneController {
+    private boolean DejaOuvert = false;
+    private Stage StageAvances = new Stage();
     private ArrayList<ArrayList<String>> ListOfEvent = new ArrayList<>();
     private MainApp mainApp;
 
@@ -32,6 +41,20 @@ public class SceneController {
     private void goToCSVLoader(MouseEvent event) throws Exception {
         mainApp.showScene("CSVLoader.fxml");
     }
+    @FXML
+    private void FenetreParametres(MouseEvent event) throws Exception {
+        if (!DejaOuvert) {
+            Parent root = new FXMLLoader(getClass().getResource("AdvancedSettings.fxml")).load();
+            StageAvances.setScene(new Scene(root));
+            StageAvances.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    DejaOuvert = false;}});
+            StageAvances.show();
+            DejaOuvert = true;
+        }
+    }
+
     public ArrayList<String> RendreLigneConforme (String ligne) {
         ArrayList<String> liste = new ArrayList<>();
         String StrBuilder = "";
@@ -46,7 +69,6 @@ public class SceneController {
         liste.add(StrBuilder);
         return liste;
     }
-
 
     private void loadCsv(){
         try {
