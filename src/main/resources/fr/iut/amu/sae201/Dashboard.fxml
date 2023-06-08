@@ -41,16 +41,7 @@
                     <font>
                         <Font name="Carlito Italic" size="25.0" />
                     </font>
-                </Label>
-                <Label minWidth="150.0" onMouseClicked="#goToSettings" text="Paramètres">
-                    <VBox.margin>
-                        <Insets top="10.0" />
-                    </VBox.margin>
-                    <font>
-                        <Font name="Carlito Italic" size="25.0" />
-                    </font>
-                </Label>
-            </children>
+                </Label></children>
             <opaqueInsets>
                 <Insets />
             </opaqueInsets>

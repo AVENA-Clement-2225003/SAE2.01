@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
 public class SceneController {
     private ArrayList<ArrayList<String>> ListOfEvent = new ArrayList<>();
     private MainApp mainApp;
@@ -30,10 +31,6 @@ public class SceneController {
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {
         mainApp.showScene("CSVLoader.fxml");
-    }
-    @FXML
-    private void goToSettings(MouseEvent event) throws Exception {
-        mainApp.showScene("Settings.fxml");
     }
     public ArrayList<String> RendreLigneConforme (String ligne) {
         ArrayList<String> liste = new ArrayList<>();
