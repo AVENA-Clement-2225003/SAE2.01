@@ -5,124 +5,148 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #1f418c"
-            xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="fr.iut.amu.sae201.SceneController" stylesheets="@style.css">
+<BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #1f418c" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.amu.sae201.SceneController">
     <left>
-        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9"
-              BorderPane.alignment="CENTER" styleClass="MenuGauche">
+        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" styleClass="MenuGauche" BorderPane.alignment="CENTER">
             <children>
-                <Label text="Menu" onMouseClicked="#goToMainMenu">
+                <Label onMouseClicked="#goToMainMenu" text="Menu">
                     <font>
-                        <Font name="Carlito Italic" size="25.0"/>
+                        <Font name="Carlito Italic" size="25.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="10.0"/>
+                        <Insets top="10.0" />
                     </VBox.margin>
                 </Label>
-                <Label text="Dashbord" onMouseClicked="#goToDashboard">
+                <Label onMouseClicked="#goToDashboard" text="Dashbord">
                     <font>
-                        <Font name="Carlito Italic" size="25.0"/>
+                        <Font name="Carlito Italic" size="25.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="10.0"/>
+                        <Insets top="10.0" />
                     </VBox.margin>
                 </Label>
-                <Label text="Carte" onMouseClicked="#goToCarte">
+                <Label onMouseClicked="#goToCarte" text="Carte">
                     <font>
-                        <Font name="Carlito Italic" size="25.0"/>
+                        <Font name="Carlito Italic" size="25.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="10.0"/>
+                        <Insets top="10.0" />
                     </VBox.margin>
                 </Label>
-                <Label minWidth="150.0" text="Fichier CSV" onMouseClicked="#goToCSVLoader">
+                <Label minWidth="150.0" onMouseClicked="#goToCSVLoader" text="Fichier CSV">
                     <VBox.margin>
-                        <Insets top="10.0"/>
+                        <Insets top="10.0" />
                     </VBox.margin>
                     <font>
-                        <Font name="Carlito Italic" size="25.0"/>
+                        <Font name="Carlito Italic" size="25.0" />
                     </font>
                 </Label>
             </children>
             <opaqueInsets>
-                <Insets/>
+                <Insets />
             </opaqueInsets>
             <BorderPane.margin>
-                <Insets bottom="45.0" top="30.0"/>
+                <Insets bottom="45.0" top="30.0" />
             </BorderPane.margin>
             <padding>
-                <Insets left="10.0"/>
+                <Insets left="10.0" />
             </padding>
         </VBox>
     </left>
     <center>
-        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9"
-              BorderPane.alignment="CENTER" styleClass="Corp">
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" styleClass="Corp" BorderPane.alignment="CENTER">
             <children>
-                <Label fx:id="Bienvenue" text="Bienvenue !">
-                    <VBox.margin>
-                        <Insets top="30.0"/>
-                    </VBox.margin>
-                </Label>
-                <HBox alignment="TOP_CENTER" maxWidth="600.0" minWidth="10.0" nodeOrientation="LEFT_TO_RIGHT">
-                    <VBox GridPane.rowIndex="0" GridPane.columnIndex="0">
-                        <Label text="Coordonnées :" styleClass="H1"></Label>
-                        <VBox prefHeight="40.0" prefWidth="10.0" GridPane.rowIndex="1" styleClass="VboxMenuSaisie">
-
-                            <Label text="Longitude" styleClass="TexteSaisie">
-                                <VBox.margin>
-                                    <Insets/>
-                                </VBox.margin>
-                                <font>
-                                    <Font name="Carlito Italic" size="15.0"/>
-                                </font>
-                            </Label>
-                            <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie"></TextField>
-                        </VBox>
-                        <VBox prefHeight="40.0" prefWidth="255.0" GridPane.rowIndex="2" styleClass="VboxMenuSaisie">
-
-                            <Label text="Latitude" styleClass="TexteSaisie">
-                                <font>
-                                    <Font name="Carlito Italic" size="15.0"/>
-                                </font>
-                            </Label>
-                            <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie"></TextField>
-                        </VBox>
-                    </VBox>
-                    <VBox>
-                        <Label text="Région :" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="H1">
-                            <font>
-                                <Font name="Carlito Italic" size="24.0"/>
-                            </font>
-                        </Label>
-                        <MenuButton maxWidth="200.0" minWidth="-Infinity" mnemonicParsing="false" text="Rechercher..."
-                                    GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <items>
-                                <MenuItem mnemonicParsing="false" text="Toutes"/>
-                                <MenuItem mnemonicParsing="false" text="Auvergne-Rhône-Alpes"/>
-                                <MenuItem mnemonicParsing="false" text="Bourgogne-Franche-Comté"/>
-                                <MenuItem mnemonicParsing="false" text="Bretagne"/>
-                                <MenuItem mnemonicParsing="false" text="Action 2"/>
-                                <MenuItem mnemonicParsing="false" text="Action 2"/>
-                            </items>
-                            <font>
-                                <Font name="Carlito Italic" size="15.0"/>
-                            </font>
-                        </MenuButton>
-                    </VBox>
-                </HBox>
-                <Button mnemonicParsing="false" prefWidth="150.0" text="Confirmer" onMouseClicked="#goToCarte">
+                <Label text="Bienvenue !">
                     <font>
-                        <Font name="Carlito Italic" size="20.0"/>
+                        <Font name="Carlito Italic" size="48.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="100.0"/>
+                        <Insets top="30.0" />
+                    </VBox.margin>
+                </Label>
+                <GridPane alignment="TOP_CENTER" maxWidth="600.0" minWidth="10.0" nodeOrientation="LEFT_TO_RIGHT" prefWidth="600.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100.0" minHeight="-Infinity" prefHeight="100.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="45.0" minHeight="-Infinity" prefHeight="0.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Coordonnées :" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <font>
+                                <Font name="Carlito Italic" size="24.0" />
+                            </font>
+                        </Label>
+                        <VBox GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <VBox prefHeight="40.0" prefWidth="10.0" styleClass="VboxMenuSaisie" GridPane.rowIndex="1">
+                                <children>
+                                    <Label text="Longitude" styleClass="">
+                                        <VBox.margin>
+                                            <Insets />
+                                        </VBox.margin>
+                                        <font>
+                                            <Font name="Carlito Italic" size="15.0" />
+                                        </font>
+                                    </Label>
+                                    <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie" />
+                                </children>
+                                <GridPane.margin>
+                                    <Insets top="10.0" />
+                                </GridPane.margin>
+                            </VBox>
+                            <VBox prefHeight="40.0" prefWidth="255.0" styleClass="VboxMenuSaisie" GridPane.rowIndex="2">
+                                <children>
+                                    <Label text="Latitude">
+                                        <font>
+                                            <Font name="Carlito Italic" size="15.0" />
+                                        </font>
+                                    </Label>
+                                    <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie" />
+                                </children>
+                                <GridPane.margin>
+                                    <Insets top="10.0" />
+                                </GridPane.margin>
+                            </VBox>
+                        </VBox>
+                        <Label text="Région :" GridPane.columnIndex="1" GridPane.rowIndex="0">
+
+                            <font>
+                                <Font name="Carlito Italic" size="24.0" />
+                            </font>
+                        </Label>
+                        <MenuButton maxWidth="200.0" minWidth="-Infinity" mnemonicParsing="false" text="Rechercher..." GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Toutes" />
+                                <MenuItem mnemonicParsing="false" text="Auvergne-Rhône-Alpes" />
+                                <MenuItem mnemonicParsing="false" text="Bourgogne-Franche-Comté" />
+                                <MenuItem mnemonicParsing="false" text="Bretagne" />
+                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                                <MenuItem mnemonicParsing="false" text="Action 2" />
+                            </items>
+                            <font>
+                                <Font name="Carlito Italic" size="15.0" />
+                            </font>
+                        </MenuButton>
+
+                    </children>
+                    <VBox.margin>
+                        <Insets left="100.0" top="100.0" />
+                    </VBox.margin>
+                </GridPane>
+                <Button mnemonicParsing="false" onMouseClicked="#goToCarte" prefWidth="150.0" text="Confirmer">
+                    <font>
+                        <Font name="Carlito Italic" size="20.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="100.0" />
                     </VBox.margin>
                 </Button>
             </children>
             <BorderPane.margin>
-                <Insets bottom="45.0" left="50.0" right="50.0" top="30.0"/>
+                <Insets bottom="45.0" left="50.0" right="50.0" top="30.0" />
             </BorderPane.margin>
         </VBox>
     </center>
