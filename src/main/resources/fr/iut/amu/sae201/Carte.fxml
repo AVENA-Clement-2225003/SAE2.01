@@ -7,7 +7,7 @@
 
 <BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #1f418c" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.amu.sae201.SceneController" stylesheets="@style.css">
     <left>
-        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" BorderPane.alignment="CENTER">
+        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" BorderPane.alignment="CENTER" styleClass="MenuGauche">
             <children>
                 <Label onMouseClicked="#goToMainMenu" text="Menu">
                     <font>
@@ -54,7 +54,7 @@
         </VBox>
     </left>
     <center>
-        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" BorderPane.alignment="CENTER" styleClass="CentreCarte">
             <BorderPane.margin>
                 <Insets bottom="45.0" left="50.0" right="30.0" top="30.0" />
             </BorderPane.margin>
@@ -63,12 +63,12 @@
          </opaqueInsets></VBox>
     </center>
    <right>
-      <VBox prefHeight="610.0" prefWidth="240.0" style="-fx-background-color: #1f418c" BorderPane.alignment="CENTER">
+      <VBox prefHeight="610.0" prefWidth="240.0" style="-fx-background-color: #1f418c" BorderPane.alignment="CENTER" >
          <BorderPane.margin>
             <Insets bottom="45.0" right="30.0" top="30.0" />
          </BorderPane.margin>
          <children>
-            <VBox prefHeight="85.0" prefWidth="240.0" style="-fx-background-color: #d9d9d9">
+            <VBox prefHeight="85.0" prefWidth="240.0" style="-fx-background-color: #d9d9d9" styleClass="EvenementsHaut">
                <children>
                   <Label text="Tous les">
                      <VBox.margin>
@@ -96,7 +96,7 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <VBox prefHeight="510.0" prefWidth="240.0" style="-fx-background-color: #d9d9d9" />
+            <VBox prefHeight="510.0" prefWidth="240.0" style="-fx-background-color: #d9d9d9" styleClass="EvenementsBas" />
             <Label text="Paramètres avancés" textFill="#d9d9d9">
                <font>
                   <Font name="Carlito" size="19.0" />
