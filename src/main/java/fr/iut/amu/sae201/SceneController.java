@@ -35,7 +35,7 @@ public class SceneController {
     }
     @FXML
     private void goToCarte(MouseEvent event) throws Exception {
-        mainApp.showScene("Carte.fxml");
+        mainApp.showCarte("Carte.fxml");
     }
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {

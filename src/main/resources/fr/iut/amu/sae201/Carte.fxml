@@ -20,7 +20,7 @@
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Label>
-                <Label onMouseClicked="#goToDashboard" text="Dashbord">
+                <Label onMouseClicked="#goToDashboard" text="Dashboard">
                     <font>
                         <Font name="Carlito Italic" size="25.0"/>
                     </font>
@@ -57,7 +57,7 @@
         </VBox>
     </left>
     <center>
-        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9"
+        <VBox fx:id="carte" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9"
               styleClass="CentreCarte" BorderPane.alignment="CENTER">
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>

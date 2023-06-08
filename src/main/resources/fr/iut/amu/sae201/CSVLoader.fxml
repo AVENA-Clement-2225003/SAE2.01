@@ -17,7 +17,7 @@
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Label>
-                <Label text="Dashbord" onMouseClicked="#goToDashboard">
+                <Label text="Dashboard" onMouseClicked="#goToDashboard">
                     <font>
                         <Font name="Carlito Italic" size="25.0" />
                     </font>
