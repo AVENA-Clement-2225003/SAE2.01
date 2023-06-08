@@ -1,7 +1,19 @@
-Corp {
-   -fx-background-radius: 10px;
-   -fx-border-radius: 10px;
-   -fx-background-color: #FFFFFF;
-   -fx-border-color: #000000;
-   -fx-border-width: 2px;
+.MenuGauche {
+    -fx-background-radius: 0px 15px 15px 0;
+}
+
+.Corp {
+    -fx-background-radius: 15px;
+
+}
+
+.VboxMenuSaisie {
+    -fx-margin: 10 0 10 0;
+}
+
+.MenuSaisie {
+    -fx-text-fill: #a3a3a3;
+    -fx-border-radius: 7px;
+    -fx-border-color: #bcbcbc;
+    -fx-background-color: #bcbcbc;
 }

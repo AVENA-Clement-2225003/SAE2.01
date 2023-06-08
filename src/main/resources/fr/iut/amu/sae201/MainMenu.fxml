@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #1f418c" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.amu.sae201.SceneController" stylesheets="style.css">
+<BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #1f418c" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.amu.sae201.SceneController" stylesheets="@style.css">
     <left>
-        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" BorderPane.alignment="CENTER">
+        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" BorderPane.alignment="CENTER" styleClass="MenuGauche">
             <children>
                 <Label text="Menu" onMouseClicked="#goToMainMenu">
                     <font>
@@ -85,14 +85,18 @@
                             </font></Label>
                         <MenuButton maxWidth="200.0" minWidth="-Infinity" mnemonicParsing="false" text="Rechercher..." GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Action 1" />
+                                <MenuItem mnemonicParsing="false" text="Toutes" />
+                                <MenuItem mnemonicParsing="false" text="Auvergne-Rhône-Alpes" />
+                                <MenuItem mnemonicParsing="false" text="Bourgogne-Franche-Comté" />
+                                <MenuItem mnemonicParsing="false" text="Bretagne" />
+                                <MenuItem mnemonicParsing="false" text="Action 2" />
                                 <MenuItem mnemonicParsing="false" text="Action 2" />
                             </items>
                             <font>
                                 <Font name="Carlito Italic" size="15.0" />
                             </font>
                         </MenuButton>
-                        <VBox prefHeight="40.0" prefWidth="10.0" GridPane.rowIndex="1">
+                        <VBox prefHeight="40.0" prefWidth="10.0" GridPane.rowIndex="1" styleClass="VboxMenuSaisie">
                             <children>
                                 <Label text="Longitude">
                                     <VBox.margin>
@@ -102,18 +106,18 @@
                                         <Font name="Carlito Italic" size="15.0" />
                                     </font>
                                 </Label>
-                                <TextField maxWidth="10.0" minWidth="-Infinity" />
+                                <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie"></TextField>
                             </children>
                             <GridPane.margin>
                                 <Insets top="10.0" />
                             </GridPane.margin></VBox>
-                        <VBox prefHeight="40.0" prefWidth="255.0" GridPane.rowIndex="2">
+                        <VBox prefHeight="40.0" prefWidth="255.0" GridPane.rowIndex="2" styleClass="VboxMenuSaisie">
                             <children>
                                 <Label text="Latitude">
                                     <font>
                                         <Font name="Carlito Italic" size="15.0" />
                                     </font></Label>
-                                <TextField maxWidth="10.0" minWidth="-Infinity" />
+                                <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie"></TextField>
                             </children>
                             <GridPane.margin>
                                 <Insets top="10.0" />
