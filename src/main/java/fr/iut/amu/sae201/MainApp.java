@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
 public class MainApp extends Application {
 
     private Stage primaryStage;
@@ -12,7 +13,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Application JavaFX");
+        this.primaryStage.setTitle("Intégration données SisFrance");
 
         // Charger et afficher la première scène
         showScene("/fr/iut/amu/sae201/MainMenu.fxml");
