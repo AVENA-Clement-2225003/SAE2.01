@@ -48,9 +48,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.vladsch.javafx-webview-debugger</groupId>
-            <artifactId>javafx-webview-debugger</artifactId>
-            <version>0.8.6</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-web</artifactId>
+            <version>18.0.1</version>
         </dependency>
     </dependencies>
 
