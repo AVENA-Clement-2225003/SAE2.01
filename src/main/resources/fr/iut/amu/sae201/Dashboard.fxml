@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -59,89 +58,110 @@
             <BorderPane.margin>
                 <Insets bottom="45.0" left="50.0" right="50.0" top="30.0" />
             </BorderPane.margin>
-         <children>
-            <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #1f418c">
-               <children>
-                  <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="165.0" prefWidth="165.0" style="-fx-background-color: #d9d9d9">
-                     <children>
-                        <Label text="Fréquence" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="30.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="165.0" prefWidth="165.0" style="-fx-background-color: #d9d9d9">
-                     <children>
-                        <Label text="Moyenne" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="165.0" prefWidth="150.0" style="-fx-background-color: #d9d9d9">
-                     <children>
-                        <Label text="Maximum" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox prefWidth="500.0">
-               <HBox.margin>
-                  <Insets left="50.0" top="30.0" />
-               </HBox.margin>
-               <children>
-                  <VBox prefHeight="165.0" prefWidth="500.0" style="-fx-background-color: #d9d9d9">
-                     <children>
-                        <Label text="Le plus récent" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="381.0" prefWidth="500.0" style="-fx-background-color: #d9d9d9">
-                     <children>
-                        <Label text="Nombre au fil des années" />
-                        <LineChart prefHeight="354.0" prefWidth="487.0">
-                          <xAxis>
-                            <CategoryAxis side="BOTTOM" />
-                          </xAxis>
-                          <yAxis>
-                            <NumberAxis side="LEFT" />
-                          </yAxis>
-                        </LineChart>
-                     </children>
-                     <opaqueInsets>
+            <children>
+                <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #1f418c">
+                    <children>
+                        <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="171.0" prefWidth="171.0" style="-fx-background-color: #d9d9d9">
+                            <children>
+                                <Label text="Fréquence">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets top="10.0" />
+                                    </VBox.margin></Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="30.0" />
+                            </VBox.margin>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="172.0" prefWidth="171.0" style="-fx-background-color: #d9d9d9">
+                            <children>
+                                <Label text="Moyenne">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets top="10.0" />
+                                    </VBox.margin></Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="50.0" />
+                            </VBox.margin>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="172.0" prefWidth="171.0" style="-fx-background-color: #d9d9d9">
+                            <children>
+                                <Label text="Maximum">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets top="10.0" />
+                                    </VBox.margin></Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets top="50.0" />
+                            </VBox.margin>
+                        </VBox>
+                    </children>
+                </VBox>
+                <VBox prefWidth="500.0">
+                    <HBox.margin>
+                        <Insets left="50.0" top="30.0" />
+                    </HBox.margin>
+                    <children>
+                        <VBox prefHeight="173.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9">
+                            <children>
+                                <Label text="Le plus récent">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets left="10.0" top="10.0" />
+                                    </VBox.margin></Label>
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="400.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9">
+                            <children>
+                                <Label text="Nombre au fil des années">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets left="10.0" top="10.0" />
+                                    </VBox.margin></Label>
+                            </children>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <VBox.margin>
+                                <Insets top="50.0" />
+                            </VBox.margin>
+                        </VBox>
+                    </children>
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="171.0" style="-fx-background-color: #1f418c">
+                    <children>
+                        <VBox prefHeight="400.0" prefWidth="171.0" style="-fx-background-color: #d9d9d9">
+                            <children>
+                                <TextField promptText="Rechercher..." />
+                            </children>
+                            <VBox.margin>
+                                <Insets top="30.0" />
+                            </VBox.margin>
+                        </VBox>
+                        <VBox prefHeight="171.0" prefWidth="171.0" style="-fx-background-color: #d9d9d9">
+                            <VBox.margin>
+                                <Insets top="50.0" />
+                            </VBox.margin></VBox>
+                    </children>
+                    <opaqueInsets>
                         <Insets />
-                     </opaqueInsets>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                  </VBox>
-               </children>
-            </VBox>
-            <VBox prefHeight="660.0" prefWidth="165.0" style="-fx-background-color: #1f418c">
-               <children>
-                  <VBox prefHeight="380.0" prefWidth="165.0" style="-fx-background-color: #d9d9d9">
-                     <children>
-                        <TextField promptText="Rechercher..." />
-                        <ScrollBar orientation="VERTICAL" prefHeight="363.0" prefWidth="14.0" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="30.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <VBox prefHeight="165.0" prefWidth="165.0" style="-fx-background-color: #d9d9d9">
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin></VBox>
-               </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <HBox.margin>
-                  <Insets left="50.0" />
-               </HBox.margin>
-            </VBox>
-         </children></HBox>
+                    </opaqueInsets>
+                    <HBox.margin>
+                        <Insets left="50.0" />
+                    </HBox.margin>
+                </VBox>
+            </children></HBox>
     </center>
 </BorderPane>
