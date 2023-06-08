@@ -7,6 +7,11 @@
 
 }
 
+.H1 {
+    -fx-font-family: Carlito;
+    -fx-font-size: 36px;
+}
+
 .VboxMenuSaisie {
     -fx-margin: 10 0 10 0;
 }
@@ -16,4 +21,20 @@
     -fx-border-radius: 7px;
     -fx-border-color: #bcbcbc;
     -fx-background-color: #bcbcbc;
+    -fx-pref-width: 220px;
+}
+
+.TexteSaisie {
+    -fx-font-family: Carlito;
+    -fx-font-size: 24px;
+}
+
+#Bienvenue {
+    -fx-font-family: Carlito;
+    -fx-font-style: Italic;
+    -fx-font-size: 64px;
+}
+
+#CoordonneMenu {
+    -fx-padding: 10px;
 }
