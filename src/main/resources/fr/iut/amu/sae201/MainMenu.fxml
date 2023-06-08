@@ -88,7 +88,7 @@
                                             <Insets />
                                         </VBox.margin>
                                         <font>
-                                            <Font name="Carlito Italic" size="15.0" />
+                                            <Font name="Carlito Italic" size="17.0" />
                                         </font>
                                     </Label>
                                     <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie" />
@@ -104,7 +104,7 @@
                                 <children>
                                     <Label text="Latitude">
                                         <font>
-                                            <Font name="Carlito Italic" size="15.0" />
+                                            <Font name="Carlito Italic" size="17.0" />
                                         </font>
                                     </Label>
                                     <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie" />
@@ -134,8 +134,6 @@
                                       <MenuItem mnemonicParsing="false" text="Auvergne-Rhône-Alpes" />
                                       <MenuItem mnemonicParsing="false" text="Bourgogne-Franche-Comté" />
                                       <MenuItem mnemonicParsing="false" text="Bretagne" />
-                                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                                      <MenuItem mnemonicParsing="false" text="Action 2" />
                                   </items>
                                   <font>
                                       <Font name="Carlito Italic" size="15.0" />
