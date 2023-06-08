@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -61,7 +62,7 @@
          <children>
             <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #1f418c">
                <children>
-                  <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #d9d9d9">
+                  <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="165.0" prefWidth="165.0" style="-fx-background-color: #d9d9d9">
                      <children>
                         <Label text="Fréquence" />
                      </children>
@@ -69,7 +70,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #d9d9d9">
+                  <VBox alignment="TOP_CENTER" prefHeight="165.0" prefWidth="165.0" style="-fx-background-color: #d9d9d9">
                      <children>
                         <Label text="Moyenne" />
                      </children>
@@ -77,7 +78,7 @@
                         <Insets top="50.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #d9d9d9">
+                  <VBox alignment="TOP_CENTER" prefHeight="165.0" prefWidth="150.0" style="-fx-background-color: #d9d9d9">
                      <children>
                         <Label text="Maximum" />
                      </children>
@@ -92,14 +93,22 @@
                   <Insets left="50.0" top="30.0" />
                </HBox.margin>
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9">
+                  <VBox prefHeight="165.0" prefWidth="500.0" style="-fx-background-color: #d9d9d9">
                      <children>
                         <Label text="Le plus récent" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9">
+                  <VBox prefHeight="381.0" prefWidth="500.0" style="-fx-background-color: #d9d9d9">
                      <children>
                         <Label text="Nombre au fil des années" />
+                        <LineChart prefHeight="354.0" prefWidth="487.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -110,17 +119,18 @@
                   </VBox>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #1f418c">
+            <VBox prefHeight="660.0" prefWidth="165.0" style="-fx-background-color: #1f418c">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9">
+                  <VBox prefHeight="380.0" prefWidth="165.0" style="-fx-background-color: #d9d9d9">
                      <children>
                         <TextField promptText="Rechercher..." />
+                        <ScrollBar orientation="VERTICAL" prefHeight="363.0" prefWidth="14.0" />
                      </children>
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9">
+                  <VBox prefHeight="165.0" prefWidth="165.0" style="-fx-background-color: #d9d9d9">
                      <VBox.margin>
                         <Insets top="50.0" />
                      </VBox.margin></VBox>
