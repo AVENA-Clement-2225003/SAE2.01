@@ -31,6 +31,10 @@ public class SceneController {
     private void goToCSVLoader(MouseEvent event) throws Exception {
         mainApp.showScene("CSVLoader.fxml");
     }
+    @FXML
+    private void goToSettings(MouseEvent event) throws Exception {
+        mainApp.showScene("Settings.fxml");
+    }
     public ArrayList<String> RendreLigneConforme (String ligne) {
         ArrayList<String> liste = new ArrayList<>();
         String StrBuilder = "";

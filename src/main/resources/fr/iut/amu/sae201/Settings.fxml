@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #1f418c" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.amu.sae201.SceneController">
+    <left>
+        <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" styleClass="MenuGauche" BorderPane.alignment="CENTER">
+            <children>
+                <Label onMouseClicked="#goToMainMenu" text="Menu">
+                    <font>
+                        <Font name="Carlito Italic" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <Label onMouseClicked="#goToDashboard" text="Dashbord">
+                    <font>
+                        <Font name="Carlito Italic" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <Label onMouseClicked="#goToCarte" text="Carte">
+                    <font>
+                        <Font name="Carlito Italic" size="25.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Label>
+                <Label minWidth="150.0" onMouseClicked="#goToCSVLoader" text="Fichier CSV">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="Carlito Italic" size="25.0" />
+                    </font>
+                </Label>
+                <Label minWidth="150.0" onMouseClicked="#goToSettings" text="Paramètres">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font name="Carlito Italic" size="25.0" />
+                    </font>
+                </Label>
+            </children>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <BorderPane.margin>
+                <Insets bottom="45.0" top="30.0" />
+            </BorderPane.margin>
+            <padding>
+                <Insets left="10.0" />
+            </padding>
+        </VBox>
+    </left>
+    <center>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" styleClass="Corp" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="45.0" left="50.0" right="50.0" top="30.0" />
+            </BorderPane.margin>
+        </VBox>
+    </center>
+</BorderPane>
