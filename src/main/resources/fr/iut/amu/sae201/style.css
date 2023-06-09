@@ -24,7 +24,7 @@
 }
 
 .MenuSaisie {
-    -fx-text-fill: #a3a3a3;
+    -fx-text-fill: #2f2f2f;
     -fx-border-radius: 7px;
     -fx-border-color: #bcbcbc;
     -fx-background-color: #bcbcbc;
@@ -32,7 +32,7 @@
 }
 
 .Saisie {
-    -fx-text-fill: #a3a3a3;
+    -fx-text-fill: #2f2f2f;
     -fx-border-radius: 7px;
     -fx-border-color: #bcbcbc;
     -fx-background-color: #bcbcbc;
