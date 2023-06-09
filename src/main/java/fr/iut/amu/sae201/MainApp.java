@@ -45,6 +45,9 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
+    public void UpShow() {
+        primaryStage.show();
+    }
 
     // Affichage carte interactive
     public void showCarte(String fxmlFileName) throws Exception {

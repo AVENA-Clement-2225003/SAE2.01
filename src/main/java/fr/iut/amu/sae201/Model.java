@@ -6,17 +6,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Model {
     FileChooser fileChooser = new FileChooser();
-    ArrayList<ArrayList<String>> donneesCSV = new ArrayList<>();;
+    ArrayList<ArrayList<String>> donneesCSV;
 
     public Model() {
-        if (donneesCSV.isEmpty()) {
-            choisirCsv();
-        }
+        donneesCSV = new ArrayList<>();
     }
 
     public ArrayList<ArrayList<String>> getDonneesCSV() {
@@ -49,7 +46,7 @@ public class Model {
         return builderAnnee;
     }
 
-    public ArrayList<Integer> getNombre(ArrayList<String> annees) {
+    public ArrayList<Integer> getNombre(ArrayList<String> annees) { //290404
         ArrayList<Integer> nombre = new ArrayList<>(annees.size());
         for (int i = 0; i < donneesCSV.size(); i += 1) {
             for (String Annee : annees) {
@@ -62,10 +59,7 @@ public class Model {
         return nombre;
     }
 
-    public ArrayList<String> getAnnee() {
-        if(donneesCSV.isEmpty()) {
-            chargerCsv();
-        }
+    public ArrayList<String> getAnnee() { //290404
         boolean estDejaPresent;
         ArrayList<String> Annees = new ArrayList<>();
         for (int i = 0; i < donneesCSV.size(); i += 1) {
@@ -76,18 +70,16 @@ public class Model {
                 }
             }
             if (!estDejaPresent) {
-                System.out.println(donneesCSV.get(i).get(1));
+                System.out.println(ExtraireAnnee(donneesCSV.get(i).get(1)));
                 Annees.add(ExtraireAnnee(donneesCSV.get(i).get(1)));
             }
         }
         return Annees;
     }
 
-    public void choisirCsv() {
+    public void chargerCsv() {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers CSV", "*.csv"));
         fileChooser.setTitle("Ouvrir un fichier CSV");
-    }
-    public void chargerCsv() {
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             try {

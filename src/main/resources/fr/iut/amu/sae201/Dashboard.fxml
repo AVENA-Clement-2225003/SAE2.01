@@ -70,6 +70,7 @@
                                     <VBox.margin>
                                         <Insets top="10.0" />
                                     </VBox.margin></Label>
+                                    <Label text="Label" fx:id="Frequence"/>
                             </children>
                             <VBox.margin>
                                 <Insets top="30.0" />
@@ -84,6 +85,7 @@
                                     <VBox.margin>
                                         <Insets top="10.0" />
                                     </VBox.margin></Label>
+                                <Label text="Label" fx:id="Moy"/>
                             </children>
                             <VBox.margin>
                                 <Insets top="50.0" />
@@ -98,6 +100,7 @@
                                     <VBox.margin>
                                         <Insets top="10.0" />
                                     </VBox.margin></Label>
+                                <Label text="Label" fx:id="Max"/>
                             </children>
                             <VBox.margin>
                                 <Insets top="50.0" />
@@ -122,6 +125,7 @@
                                     <VBox.margin>
                                         <Insets left="10.0" top="10.0" />
                                     </VBox.margin></Label>
+                                <Label text="Label" fx:id="LPR"/>
                             </children>
                         </VBox>
                         <VBox prefHeight="400.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" styleClass="Corp">
