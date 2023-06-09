@@ -1,6 +1,8 @@
 package fr.iut.amu.sae201;
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,6 +13,9 @@ import javafx.stage.WindowEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 import java.io.IOException;
+import javafx.concurrent.Worker;
+import com.gluonhq.maps.MapPoint;
+import com.gluonhq.maps.MapView;
 
 public class MainApp extends Application {
 
@@ -22,7 +27,7 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Intégration données SisFrance");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/iut/amu/sae201/Carte.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/iut/amu/sae201/MainMenu.fxml"));
             Pane root = loader.load();
             SceneController controller = loader.getController(); // Renvoie une instance valide du contrôleur
             controller.setMainApp(this); // Vérification si le contrôleur est null
@@ -53,18 +58,24 @@ public class MainApp extends Application {
     public void showCarte(String fxmlFileName) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName));
         Pane root = fxmlLoader.load();
-        WebView webView = new WebView();
-        String mapURL = "https://www.openstreetmap.org/export/embed.html?bbox=2.944,46.476,2.944,46.476&layer=mapnik";
-        webView.getEngine().load(mapURL);
+        SceneController controller = fxmlLoader.getController();
+        controller.setMainApp(this);
+
         VBox carte = (VBox) root.lookup("#carte");
-        carte.getChildren().add(webView);
+
+        MapView mapView = new MapView();
+
+        // Création point
+        MapPoint mapPoint = new MapPoint(47, 2);
+
+        // Définition zoom et centrage carte
+        mapView.setZoom(6);
+        mapView.flyTo(0, mapPoint, 0.1);
+
+        carte.getChildren().add(mapView);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
-        // Obtenir le contrôleur de la scène chargée
-        SceneController controller = fxmlLoader.getController();
-        // Définir le contrôleur principal pour permettre la navigation entre les scènes
-        controller.setMainApp(this);
     }
 
         public static void main(String[] args) {
