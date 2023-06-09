@@ -3,61 +3,82 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <BorderPane prefHeight="462.0" prefWidth="590.0" style="-fx-background-color: #1f418c" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.amu.sae201.SceneController">
     <center>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" styleClass="Corp" BorderPane.alignment="CENTER">
+        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" styleClass="Corp" BorderPane.alignment="CENTER">
             <BorderPane.margin>
                 <Insets bottom="45.0" left="50.0" right="50.0" top="30.0" />
             </BorderPane.margin>
          <children>
-            <GridPane prefHeight="233.0" prefWidth="490.0">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="233.0" prefWidth="490.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                  <GridPane prefHeight="200.0" prefWidth="490.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
                      <children>
-                        <Label styleClass="Texte" text="Force minimale" />
-                        <TextField prefHeight="24.0" prefWidth="202.0" promptText="0" styleClass="Saisie">
-                           <VBox.margin>
-                              <Insets right="50.0" />
-                           </VBox.margin></TextField>
-                     </children></VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                     <children>
-                        <Label styleClass="Texte" text="Force maximale" />
-                        <TextField promptText="0" styleClass="Saisie">
-                           <VBox.margin>
-                              <Insets right="50.0" />
-                           </VBox.margin></TextField>
-                     </children></VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
-                     <children>
-                        <Label styleClass="Texte" text="Date début" />
-                        <TextField styleClass="Saisie" text="jj/mm/aaaa">
-                           <VBox.margin>
-                              <Insets right="50.0" />
-                           </VBox.margin></TextField>
-                     </children></VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <children>
-                        <Label styleClass="Texte" text="Date fin" />
-                        <TextField styleClass="Saisie" text="jj/mm/aaaa">
-                           <VBox.margin>
-                              <Insets right="50.0" />
-                           </VBox.margin></TextField>
-                     </children></VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                           <children>
+                              <Label styleClass="Texte" text="Force minimale" />
+                              <TextField fx:id="forceMin" prefHeight="24.0" prefWidth="202.0" promptText="0" styleClass="Saisie">
+                                 <VBox.margin>
+                                    <Insets right="50.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                           <children>
+                              <Label styleClass="Texte" text="Force maximale" />
+                              <TextField fx:id="forceMax" promptText="0" styleClass="Saisie">
+                                 <VBox.margin>
+                                    <Insets right="50.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                           <children>
+                              <Label styleClass="Texte" text="Date début" />
+                              <TextField fx:id="dateDebut" styleClass="Saisie" text="jj/mm/aaaa">
+                                 <VBox.margin>
+                                    <Insets right="50.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label styleClass="Texte" text="Date fin" />
+                              <TextField fx:id="dateFin" styleClass="Saisie" text="jj/mm/aaaa">
+                                 <VBox.margin>
+                                    <Insets right="50.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="50.0" />
+                     </VBox.margin>
+                  </GridPane>
                </children>
-               <VBox.margin>
-                  <Insets left="50.0" />
-               </VBox.margin>
-            </GridPane>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="84.0" prefWidth="490.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#ValiderParametres" prefHeight="32.0" prefWidth="101.0" text="Valider">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Button>
+               </children>
+            </VBox>
          </children>
         </VBox>
     </center>

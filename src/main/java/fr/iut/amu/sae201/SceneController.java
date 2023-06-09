@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -20,10 +21,18 @@ public class SceneController {
     private Stage StageAvances = new Stage();
     private ArrayList<ArrayList<String>> ListOfEvent = new ArrayList<>();
     private MainApp mainApp;
-
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+    @FXML
+    private TextField forceMax = new TextField();
+    @FXML
+    private TextField forceMin = new TextField();
+    @FXML
+    private TextField dateDebut = new TextField();
+    @FXML
+    private TextField dateFin = new TextField();
+
 
     @FXML
     private void goToMainMenu(MouseEvent event) throws Exception {
@@ -46,6 +55,7 @@ public class SceneController {
         if (!DejaOuvert) {
             Parent root = new FXMLLoader(getClass().getResource("AdvancedSettings.fxml")).load();
             StageAvances.setScene(new Scene(root));
+            StageAvances.setResizable(false);
             StageAvances.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(WindowEvent event) {
@@ -53,6 +63,15 @@ public class SceneController {
             StageAvances.show();
             DejaOuvert = true;
         }
+    }
+
+    @FXML
+    private void ValiderParametres (MouseEvent event) throws Exception {
+            Integer.valueOf(forceMin.getText());
+            Integer.valueOf(forceMax.getText());
+            dateDebut.getText();
+            dateFin.getText();
+            //ajouter un moyen de fermer la fenêtre
     }
 
     public ArrayList<String> RendreLigneConforme (String ligne) {
