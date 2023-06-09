@@ -27,7 +27,7 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                            <children>
                               <Label styleClass="Texte" text="Force minimale" />
-                              <TextField prefHeight="24.0" prefWidth="202.0" promptText="0" styleClass="Saisie">
+                              <TextField fx:id="forceMin" prefHeight="24.0" prefWidth="202.0" promptText="0" styleClass="Saisie">
                                  <VBox.margin>
                                     <Insets right="50.0" />
                                  </VBox.margin>
@@ -37,7 +37,7 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                            <children>
                               <Label styleClass="Texte" text="Force maximale" />
-                              <TextField promptText="0" styleClass="Saisie">
+                              <TextField fx:id="forceMax" promptText="0" styleClass="Saisie">
                                  <VBox.margin>
                                     <Insets right="50.0" />
                                  </VBox.margin>
@@ -47,7 +47,7 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
                            <children>
                               <Label styleClass="Texte" text="Date début" />
-                              <TextField styleClass="Saisie" text="jj/mm/aaaa">
+                              <TextField fx:id="dateDebut" styleClass="Saisie" text="jj/mm/aaaa">
                                  <VBox.margin>
                                     <Insets right="50.0" />
                                  </VBox.margin>
@@ -57,7 +57,7 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <Label styleClass="Texte" text="Date fin" />
-                              <TextField styleClass="Saisie" text="jj/mm/aaaa">
+                              <TextField fx:id="dateFin" styleClass="Saisie" text="jj/mm/aaaa">
                                  <VBox.margin>
                                     <Insets right="50.0" />
                                  </VBox.margin>
@@ -73,7 +73,7 @@
             </VBox>
             <VBox alignment="TOP_CENTER" prefHeight="84.0" prefWidth="490.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="32.0" prefWidth="101.0" text="Valider">
+                  <Button mnemonicParsing="false" onMouseClicked="#ValiderParametres" prefHeight="32.0" prefWidth="101.0" text="Valider">
                      <font>
                         <Font size="15.0" />
                      </font></Button>
