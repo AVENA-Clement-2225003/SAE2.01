@@ -1,13 +1,10 @@
 package fr.iut.amu.sae201;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.web.WebView;
 import java.io.IOException;
@@ -22,9 +19,9 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Intégration données SisFrance");
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/iut/amu/sae201/Carte.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/iut/amu/sae201/MainMenu.fxml"));
             Pane root = loader.load();
-            SceneController controller = loader.getController(); // Renvoie une instance valide du contrôleur
+            View controller = loader.getController(); // Renvoie une instance valide du contrôleur
             controller.setMainApp(this); // Vérification si le contrôleur est null
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
@@ -39,7 +36,7 @@ public class MainApp extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
         Pane root = loader.load();
         // Obtenir le contrôleur de la scène chargée
-        SceneController controller = loader.getController();
+        View controller = loader.getController();
         // Définir le contrôleur principal pour permettre la navigation entre les scènes
         controller.setMainApp(this);
 
@@ -62,7 +59,7 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         // Obtenir le contrôleur de la scène chargée
-        SceneController controller = fxmlLoader.getController();
+        View controller = fxmlLoader.getController();
         // Définir le contrôleur principal pour permettre la navigation entre les scènes
         controller.setMainApp(this);
     }

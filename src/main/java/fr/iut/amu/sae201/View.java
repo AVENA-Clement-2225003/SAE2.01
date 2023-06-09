@@ -5,18 +5,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.controlsfx.control.PropertySheet;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 
-public class SceneController {
+public class View {
+    @FXML
+    LineChart<String, Number> lineChart;
     private boolean DejaOuvert = false;
+    Model DCSV = new Model();
+    ModelView DMV = new ModelView();
     private Stage StageAvances = new Stage();
     private ArrayList<ArrayList<String>> ListOfEvent = new ArrayList<>();
     private MainApp mainApp;
@@ -32,6 +35,8 @@ public class SceneController {
     @FXML
     private void goToDashboard(MouseEvent event) throws Exception {
         mainApp.showScene("Dashboard.fxml");
+        lineChart = DMV.actuDonnees();
+
     }
     @FXML
     private void goToCarte(MouseEvent event) throws Exception {
@@ -39,7 +44,8 @@ public class SceneController {
     }
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {
-        mainApp.showScene("CSVLoader.fxml");
+        DCSV.chargerCsv();
+        ListOfEvent = DCSV.getDonneesCSV();
     }
     @FXML
     private void FenetreParametres(MouseEvent event) throws Exception {
@@ -52,41 +58,6 @@ public class SceneController {
                     DejaOuvert = false;}});
             StageAvances.show();
             DejaOuvert = true;
-        }
-    }
-
-    public ArrayList<String> RendreLigneConforme (String ligne) {
-        ArrayList<String> liste = new ArrayList<>();
-        String StrBuilder = "";
-        for (char c : ligne.toCharArray()) {
-            if (c == ',') {
-                liste.add(StrBuilder);
-                StrBuilder = "";
-            } else if (c != '\"') {
-                StrBuilder += c;
-            }
-        }
-        liste.add(StrBuilder);
-        return liste;
-    }
-
-    private void loadCsv(){
-        try {
-            BufferedReader file = new BufferedReader(new FileReader("/amuhome/m22009213/Bureau/SAE2.01/src/main/resources/fr/iut/amu/sae201/SisFrance_seismes.csv"));
-            System.out.println("File found");
-            String line;
-            while ((line = file.readLine()) != null) {
-                ListOfEvent.add(RendreLigneConforme(line));
-                System.out.println(line);
-            }
-            file.close();
-        }
-        catch (FileNotFoundException e){
-            e.printStackTrace();
-            System.out.println("File not found");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("File not found");
         }
     }
 }
