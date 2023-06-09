@@ -4,6 +4,7 @@ module fr.iut.amu.sae201 {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires javafx.web;
 
     opens fr.iut.amu.sae201 to javafx.fxml;
     exports fr.iut.amu.sae201;
