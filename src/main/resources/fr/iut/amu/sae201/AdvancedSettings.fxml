@@ -27,7 +27,7 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
                            <children>
                               <Label styleClass="Texte" text="Force minimale" />
-                              <TextField fx:id="forceMin" prefHeight="24.0" prefWidth="202.0" promptText="0" styleClass="Saisie">
+                              <TextField fx:id="forceMin" prefHeight="24.0" prefWidth="202.0" promptText="0.1" styleClass="Saisie">
                                  <VBox.margin>
                                     <Insets right="50.0" />
                                  </VBox.margin>
@@ -37,7 +37,7 @@
                         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
                            <children>
                               <Label styleClass="Texte" text="Force maximale" />
-                              <TextField fx:id="forceMax" promptText="0" styleClass="Saisie">
+                              <TextField fx:id="forceMax" promptText="10.0" styleClass="Saisie">
                                  <VBox.margin>
                                     <Insets right="50.0" />
                                  </VBox.margin>

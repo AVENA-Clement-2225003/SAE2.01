@@ -6,9 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import javafx.util.converter.FloatStringConverter;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -24,10 +26,30 @@ public class SceneController {
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+    public void initialize() {
+        //permet de ne pouvoir rentrer que des float de 3 chiffre
+        forceMin.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{0,2}([.]\\d{0,1})?")) {
+                forceMin.setText(oldValue);
+            }
+            if (newValue.indexOf('.') != newValue.lastIndexOf('.')) {
+                forceMin.setText(oldValue);
+            }
+        });
+        forceMax.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{0,2}([.]\\d{0,1})?")) {
+                forceMax.setText(oldValue);
+            }
+            if (newValue.indexOf('.') != newValue.lastIndexOf('.')) {
+                forceMax.setText(oldValue);
+            }
+        });
+    }
+
     @FXML
-    private TextField forceMax = new TextField();
+    private TextField forceMax = new TextField("10.0");
     @FXML
-    private TextField forceMin = new TextField();
+    private TextField forceMin = new TextField("0.1");
     @FXML
     private TextField dateDebut = new TextField();
     @FXML
@@ -67,8 +89,14 @@ public class SceneController {
 
     @FXML
     private void ValiderParametres (MouseEvent event) throws Exception {
-            Integer.valueOf(forceMin.getText());
-            Integer.valueOf(forceMax.getText());
+        Float forceMinFloat = Float.valueOf(forceMin.getText());
+        if (forceMinFloat >= 0.1 && forceMinFloat <= 10.0){
+            //action à faire
+        }
+        Float forceMaxFloat = Float.valueOf(forceMax.getText());
+        if (forceMaxFloat >= 0.1 && forceMinFloat <= 10.0){
+            //action à faire
+        }
             dateDebut.getText();
             dateFin.getText();
             //ajouter un moyen de fermer la fenêtre
