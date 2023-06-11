@@ -6,8 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
-import javafx.scene.web.WebView;
 import java.io.IOException;
+import com.gluonhq.maps.MapPoint;
+import com.gluonhq.maps.MapView;
 
 public class MainApp extends Application {
 
@@ -53,18 +54,24 @@ public class MainApp extends Application {
     public void showCarte(String fxmlFileName) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName));
         Pane root = fxmlLoader.load();
-        WebView webView = new WebView();
-        String mapURL = "https://www.openstreetmap.org/export/embed.html?bbox=2.944,46.476,2.944,46.476&layer=mapnik";
-        webView.getEngine().load(mapURL);
+        View controller = fxmlLoader.getController();
+        controller.setMainApp(this);
+
         VBox carte = (VBox) root.lookup("#carte");
-        carte.getChildren().add(webView);
+
+        MapView mapView = new MapView();
+
+        // Création point
+        MapPoint mapPoint = new MapPoint(47, 2);
+
+        // Définition zoom et centrage carte
+        mapView.setZoom(6);
+        mapView.flyTo(0, mapPoint, 0.1);
+
+        carte.getChildren().add(mapView);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
-        // Obtenir le contrôleur de la scène chargée
-        View controller = fxmlLoader.getController();
-        // Définir le contrôleur principal pour permettre la navigation entre les scènes
-        controller.setMainApp(this);
     }
 
     public static void main(String[] args) {

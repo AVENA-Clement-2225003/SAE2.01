@@ -22,6 +22,18 @@ public class View {
     CategoryAxis xAxis = new CategoryAxis();
     NumberAxis yAxis = new NumberAxis();
     @FXML
+    private TextField forceMax = new TextField();
+    @FXML
+    private TextField forceMin = new TextField();
+    @FXML
+    private TextField dateDebut = new TextField();
+    @FXML
+    private TextField dateFin = new TextField();
+    float ValueForceMax;
+    float ValueForceMin;
+    String ValueDateDebut;
+    String ValueDateFin;
+    @FXML
     TextField Region = new TextField();
     @FXML
     TextField DateDeb = new TextField();
@@ -100,6 +112,25 @@ public class View {
                     DejaOuvert = false;}});
             StageAvances.show();
             DejaOuvert = true;
+        }
+    }
+    @FXML
+    private void ValiderParametres (MouseEvent event) throws Exception {
+        if (!(forceMax.getText().isEmpty() && forceMin.getText().isEmpty())) {
+            ValueForceMax = 0.0f;
+            ValueForceMin = 10.0f;
+        } else {
+            ValueForceMax = Float.parseFloat(forceMax.getText());
+            ValueForceMin = Float.parseFloat(forceMin.getText());
+        }
+        if (!(dateDebut.getText().isEmpty() && dateFin.getText().isEmpty())) {
+            ValueDateDebut = "";
+            ValueDateFin = "";
+        } else {
+            ValueDateDebut = dateDebut.getText();
+            ValueDateFin = dateFin.getText();
+        } if (((ValueForceMin >= 0.0 && ValueForceMax <= 10.0) && ValueForceMin < ValueForceMax) && (DMV.dateEstInferieure(ValueDateDebut, ValueDateFin))) {
+            //Valider les parametre
         }
     }
 }

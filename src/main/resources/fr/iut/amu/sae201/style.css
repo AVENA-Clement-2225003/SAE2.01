@@ -34,8 +34,8 @@
 .Saisie {
     -fx-text-fill: #a3a3a3;
     -fx-border-radius: 7px;
-    -fx-border-color: #bcbcbc;
-    -fx-background-color: #bcbcbc;
+    -fx-border-color: #FFFFFF;
+    -fx-background-color: #FFFFFF;
 }
 
 .TexteSaisie {

@@ -96,9 +96,9 @@
                                 <GridPane.margin>
                                     <Insets top="10.0" />
                                 </GridPane.margin>
-                        <VBox.margin>
-                           <Insets bottom="10.0" />
-                        </VBox.margin>
+                                <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                </VBox.margin>
                             </VBox>
                             <VBox prefHeight="40.0" prefWidth="255.0" styleClass="VboxMenuSaisie" GridPane.rowIndex="2">
                                 <children>
@@ -112,13 +112,13 @@
                                 <GridPane.margin>
                                     <Insets top="10.0" />
                                 </GridPane.margin>
-                        <VBox.margin>
-                           <Insets top="10.0" />
-                        </VBox.margin>
+                                <VBox.margin>
+                                    <Insets top="10.0" />
+                                </VBox.margin>
                             </VBox>
-                     <GridPane.margin>
-                        <Insets top="30.0" />
-                     </GridPane.margin>
+                            <GridPane.margin>
+                                <Insets top="30.0" />
+                            </GridPane.margin>
                         </VBox>
                         <Label text="Région :" GridPane.columnIndex="1" GridPane.rowIndex="0">
 
@@ -126,20 +126,20 @@
                                 <Font name="Carlito Italic" size="24.0" />
                             </font>
                         </Label>
-                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <children>
-                              <MenuButton maxWidth="200.0" minWidth="-Infinity" mnemonicParsing="false" text="Rechercher...">
-                                  <items>
-                                      <MenuItem mnemonicParsing="false" text="Toutes" />
-                                      <MenuItem mnemonicParsing="false" text="Auvergne-Rhône-Alpes" />
-                                      <MenuItem mnemonicParsing="false" text="Bourgogne-Franche-Comté" />
-                                      <MenuItem mnemonicParsing="false" text="Bretagne" />
-                                  </items>
-                                  <font>
-                                      <Font name="Carlito Italic" size="15.0" />
-                                  </font>
-                              </MenuButton>
-                     </children></VBox>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="66.0" prefWidth="203.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <MenuButton maxWidth="200.0" minWidth="-Infinity" mnemonicParsing="false" text="Rechercher...">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Toutes" />
+                                        <MenuItem mnemonicParsing="false" text="Auvergne-Rhône-Alpes" />
+                                        <MenuItem mnemonicParsing="false" text="Bourgogne-Franche-Comté" />
+                                        <MenuItem mnemonicParsing="false" text="Bretagne" />
+                                    </items>
+                                    <font>
+                                        <Font name="Carlito Italic" size="15.0" />
+                                    </font>
+                                </MenuButton>
+                            </children></VBox>
 
                     </children>
                     <VBox.margin>
