@@ -12,6 +12,7 @@
                 <Insets bottom="45.0" left="50.0" right="50.0" top="30.0" />
             </BorderPane.margin>
             <children>
+            <Label id="LabelErreurParametre" style="-fx-text-fill: red" text="Les paramètres ne sont pas corrects" visible="false" />
                 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="233.0" prefWidth="490.0">
                     <children>
                         <GridPane prefHeight="200.0" prefWidth="490.0">

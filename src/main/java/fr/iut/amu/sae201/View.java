@@ -21,6 +21,14 @@ public class View {
     Model M = new Model();
     CategoryAxis xAxis = new CategoryAxis();
     NumberAxis yAxis = new NumberAxis();
+    float ValueForceMax;
+    float ValueForceMin;
+    String ValueDateDebut;
+    String ValueDateFin;
+    private boolean DejaOuvert = false;
+    ModelView DMV = new ModelView();
+    private Stage StageAvances = new Stage();
+    private MainApp mainApp;
     @FXML
     private TextField forceMax = new TextField();
     @FXML
@@ -29,10 +37,8 @@ public class View {
     private TextField dateDebut = new TextField();
     @FXML
     private TextField dateFin = new TextField();
-    float ValueForceMax;
-    float ValueForceMin;
-    String ValueDateDebut;
-    String ValueDateFin;
+    @FXML
+    private Label LabelErreurParametre = new Label();
     @FXML
     TextField Region = new TextField();
     @FXML
@@ -51,10 +57,6 @@ public class View {
     Label MagnetudeMoy = new Label();
     @FXML
     Label LPR = new Label();
-    private boolean DejaOuvert = false;
-    ModelView DMV = new ModelView();
-    private Stage StageAvances = new Stage();
-    private MainApp mainApp;
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -96,6 +98,8 @@ public class View {
     @FXML
     private void goToCarte(MouseEvent event) throws Exception {
         mainApp.showCarte("Carte.fxml");
+        LabelErreurParametre.setVisible(false);
+        LabelErreurParametre.setText("cc");
     }
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {
@@ -115,22 +119,25 @@ public class View {
         }
     }
     @FXML
-    private void ValiderParametres (MouseEvent event) throws Exception {
-        if (!(forceMax.getText().isEmpty() && forceMin.getText().isEmpty())) {
-            ValueForceMax = 0.0f;
-            ValueForceMin = 10.0f;
+    private void ValiderParametres (MouseEvent event) throws Exception { //Fonctionne sauf pour quitter la fenetre
+        if ((forceMax.getText().isEmpty() && forceMin.getText().isEmpty())) {
+            ValueForceMin = 0.0f;
+            ValueForceMax = 10.0f;
         } else {
             ValueForceMax = Float.parseFloat(forceMax.getText());
             ValueForceMin = Float.parseFloat(forceMin.getText());
         }
-        if (!(dateDebut.getText().isEmpty() && dateFin.getText().isEmpty())) {
+        if ((dateDebut.getText().isEmpty() && dateFin.getText().isEmpty())) {
             ValueDateDebut = "";
             ValueDateFin = "";
         } else {
             ValueDateDebut = dateDebut.getText();
             ValueDateFin = dateFin.getText();
-        } if (((ValueForceMin >= 0.0 && ValueForceMax <= 10.0) && ValueForceMin < ValueForceMax) && (DMV.dateEstInferieure(ValueDateDebut, ValueDateFin))) {
-            //Valider les parametre
+        } if (((ValueForceMin >= 0.0 && ValueForceMax <= 10.0) && ValueForceMin <= ValueForceMax) && ((ValueDateDebut == "" && ValueDateFin == "") || DMV.dateEstInferieure(ValueDateDebut, ValueDateFin))) {
+            LabelErreurParametre.setVisible(false);
+            StageAvances.close();
+        } else {
+            LabelErreurParametre.setVisible(true);
         }
     }
 }
