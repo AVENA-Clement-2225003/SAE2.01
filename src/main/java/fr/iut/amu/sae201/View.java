@@ -5,23 +5,34 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import org.controlsfx.control.PropertySheet;
 
 import java.util.ArrayList;
 
 public class View {
+    Model M = new Model();
+    CategoryAxis xAxis = new CategoryAxis();
+    NumberAxis yAxis = new NumberAxis();
     @FXML
-    LineChart<String, Number> lineChart;
+    TextField Region = new TextField();
+    @FXML
+    TextField DateDeb = new TextField();
+    @FXML
+    TextField DateFin = new TextField();
+    @FXML
+    LineChart<String, Number> lineChart = new LineChart<>(xAxis, yAxis);
     @FXML
     Label Frequence = new Label();
     @FXML
-    Label Max = new Label();
+    Label MaxLabel = new Label();
     @FXML
     Label Moy = new Label();
     @FXML
@@ -29,10 +40,8 @@ public class View {
     @FXML
     Label LPR = new Label();
     private boolean DejaOuvert = false;
-    Model DCSV = new Model();
     ModelView DMV = new ModelView();
     private Stage StageAvances = new Stage();
-    private ArrayList<ArrayList<String>> ListOfEvent = new ArrayList<>();
     private MainApp mainApp;
 
     public void setMainApp(MainApp mainApp) {
@@ -46,15 +55,31 @@ public class View {
     @FXML
     private void goToDashboard(MouseEvent event) throws Exception {
         mainApp.showScene("Dashboard.fxml");
-        System.out.println("Passe");
-        lineChart = DMV.actuDonnees();
-        Frequence.setText("Pas de liaison"); //290404
-        Max.setText("Pas de liaison");
-        Moy.setText("Pas de liaison");
-        LPR.setText("Pas de liaison");
-        MagnetudeMoy.setText("Pas de liaison");
-        System.out.println("Passe");
+    }
+    @FXML
+    private void Actu(MouseEvent event) throws Exception {
+        DMV.SelectionEchantillonDonneesDashboard(DMV.TransformerDate(DateDeb.getText()), DMV.TransformerDate(DateFin.getText()), Region.getText());
+        ArrayList<String> Annee = new ArrayList<>(DMV.getAnnee());
+        ArrayList<Integer> NombreParAnne = new ArrayList<>(DMV.getNombreParAnne());
+        if(M.getDonneesCSV().isEmpty()) {
+            M.chargerCsv();
+            DMV.SelectionEchantillonDonneesDashboard(DMV.TransformerDate(DateDeb.getText()), DMV.TransformerDate(DateFin.getText()), Region.getText());
+            Annee = DMV.getAnnee();
+            NombreParAnne = DMV.getNombreParAnne();
+        }
+        lineChart.getData().clear();
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        for (int i = 0; i < Annee.size(); ++i) {
+            series.getData().add(new XYChart.Data<>(Annee.get(i), NombreParAnne.get(i)));
+        }
+        lineChart.getData().add(series);
+        Frequence.setText(String.format("Il y a environ %.1f jour entre chaques évèments", DMV.Frequence()));
+        MaxLabel.setText(String.valueOf(DMV.Maximum()));
+        Moy.setText(String.format("Environ %.2f/par an", DMV.MoyenneSeisme()));
+        LPR.setText(DMV.LePlusRecent());
+        MagnetudeMoy.setText(String.format("%.3f en moyenne sur la période donnée", DMV.MagnitudeMoyenne()));
         mainApp.UpShow();
+        //System.out.println("Passe");
     }
     @FXML
     private void goToCarte(MouseEvent event) throws Exception {
@@ -62,8 +87,7 @@ public class View {
     }
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {
-        DCSV.chargerCsv();
-        ListOfEvent = DCSV.getDonneesCSV();
+        M.chargerCsv();
     }
     @FXML
     private void FenetreParametres(MouseEvent event) throws Exception {

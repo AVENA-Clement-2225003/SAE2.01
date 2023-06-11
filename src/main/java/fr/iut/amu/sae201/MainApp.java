@@ -67,7 +67,8 @@ public class MainApp extends Application {
         controller.setMainApp(this);
     }
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         launch(args);
+
     }
 }
