@@ -121,7 +121,7 @@ public class View {
     @FXML
     private void ValiderParametres (MouseEvent event) throws Exception { //Fonctionne sauf pour quitter la fenetre
         if ((forceMax.getText().isEmpty() && forceMin.getText().isEmpty())) {
-            ValueForceMin = 0.0f;
+            ValueForceMin = 0.1f;
             ValueForceMax = 10.0f;
         } else {
             ValueForceMax = Float.parseFloat(forceMax.getText());
