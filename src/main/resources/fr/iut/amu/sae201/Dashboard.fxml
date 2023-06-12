@@ -18,7 +18,7 @@
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Label>
-                <Label onMouseClicked="#goToDashboard" text="Dashboard">
+                <Label text="Dashboard">
                     <font>
                         <Font name="Carlito Italic" size="25.0" />
                     </font>
@@ -96,15 +96,15 @@
                         </VBox>
                         <VBox alignment="TOP_CENTER" prefHeight="172.0" prefWidth="171.0" style="-fx-background-color: #d9d9d9" styleClass="Corp">
                             <children>
-                                <Label text="Maximum">
+                                <Label fx:id="MaxLabel" prefHeight="114.0" prefWidth="161.0" text="Chargez un CSV ou cliquez sur Actualiser" textAlignment="CENTER" wrapText="true" />
+                                <Label text="au maximum">
                                     <font>
-                                        <Font size="24.0" />
+                                        <Font size="18.0" />
                                     </font>
                                     <VBox.margin>
                                         <Insets top="10.0" />
                                     </VBox.margin>
                                 </Label>
-                                <Label fx:id="MaxLabel" prefHeight="34.0" prefWidth="161.0" text="Chargez un CSV ou cliquez sur Actualiser" textAlignment="CENTER" wrapText="true" />
                             </children>
                             <VBox.margin>
                                 <Insets top="50.0" />
@@ -130,7 +130,7 @@
                                         <Insets left="10.0" top="10.0" />
                                     </VBox.margin>
                                 </Label>
-                                <Label fx:id="LPR" prefHeight="18.0" prefWidth="500.0" text="Chargez un CSV ou cliquez sur Actualiser" wrapText="true" />
+                                <Label fx:id="LPR" prefHeight="18.0" prefWidth="496.0" text="Chargez un CSV ou cliquez sur Actualiser" wrapText="true" />
                             </children>
                         </VBox>
                         <VBox prefHeight="400.0" prefWidth="100.0" style="-fx-background-color: #d9d9d9" styleClass="Corp">
@@ -170,8 +170,12 @@
                             <children>
                                 <VBox prefHeight="170.0" prefWidth="151.0">
                                     <children>
+                              <Label text="Sélection d'une région" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
                                         <TextField prefHeight="34.0" prefWidth="171.0" promptText="Rechercher..." />
-                                        <ListView prefHeight="200.0" prefWidth="200.0" />
                                     </children>
                                     <VBox.margin>
                                         <Insets left="10.0" right="10.0" top="20.0" />
@@ -193,10 +197,14 @@
                                         <Insets left="10.0" right="10.0" top="20.0" />
                                     </VBox.margin>
                                 </VBox>
-                                <HBox prefHeight="100.0" prefWidth="200.0">
+                                <HBox alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="171.0">
                                     <children>
-                                        <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onMouseClicked="#Actu" text="Actualiser">
+                              <VBox alignment="CENTER" prefHeight="41.0" prefWidth="89.0">
+                                 <children>
+                                              <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onMouseClicked="#Actu" prefHeight="19.0" prefWidth="71.0" text="Actualiser">
                                         </Button>
+                                 </children>
+                              </VBox>
                                     </children>
                                 </HBox>
                             </children>

@@ -30,7 +30,7 @@ public class MainApp extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        this.primaryStage.setResizable(false);
     }
 
     public void showScene(String fxmlFileName) throws Exception {

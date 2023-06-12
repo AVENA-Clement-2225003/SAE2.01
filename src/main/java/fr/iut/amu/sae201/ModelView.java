@@ -1,6 +1,8 @@
 package fr.iut.amu.sae201;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ModelView {
     Model CSV = new Model();
@@ -173,24 +175,28 @@ public class ModelView {
     }
 
     public float Frequence() {
-        ArrayList<String> ListeDate = new ArrayList<>();
-        char[] caracteres;
-        int debut;
-        int fin;
+        ArrayList<Date> ListeDate = new ArrayList<>();
+        String[] temp = {"", "", ""};
+        ArrayList<Long> ListeEspaceDate = new ArrayList<>();
+        long Somme = 0;
+        long DifferenceTemp;
         for (ArrayList<String> ligne : donneesCSV) {
-            caracteres = ligne.get(1).toCharArray();
-            debut = 0;
-            fin = caracteres.length - 1;
-            while (debut < fin) {
-                char temp = caracteres[debut];
-                caracteres[debut] = caracteres[fin];
-                caracteres[fin] = temp;
-                debut++;
-                fin--;
+            temp = ligne.get(1).split("/");
+            if (temp.length == 1) {
+                temp = new String[]{temp[0], "01", "01"};
+            } else if (temp.length == 2) {
+                temp = new String[]{temp[0], temp[1], "01"};
             }
-            ListeDate.add(new String(caracteres));
+            ListeDate.add(new Date( Integer.parseInt(temp[0]), Integer.parseInt(temp[1]), Integer.parseInt(temp[2])));
         }
-        return 0.0f;
+        for (int i = 0; i < ListeDate.size()-1;  i+=1) {
+            DifferenceTemp = ListeDate.get(i+1).getTime() - ListeDate.get(i).getTime();
+            ListeEspaceDate.add(TimeUnit.DAYS.convert(DifferenceTemp, TimeUnit.MILLISECONDS));
+        }
+        for (long Espacement : ListeEspaceDate) {
+            Somme += Espacement;
+        }
+        return Somme/ListeEspaceDate.size();
     }
 
     public float MoyenneSeisme() {

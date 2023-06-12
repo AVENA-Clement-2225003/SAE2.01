@@ -3,6 +3,7 @@ package fr.iut.amu.sae201;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -12,6 +13,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -89,7 +91,10 @@ public class View {
         lineChart.getData().add(series);
         Frequence.setText(String.format("Il y a environ %.1f jour entre chaques évèments", DMV.Frequence()));
         MaxLabel.setText(String.valueOf(DMV.Maximum()));
+        MaxLabel.setFont(new Font(60));
+        MaxLabel.setAlignment(Pos.BOTTOM_CENTER);
         Moy.setText(String.format("Environ %.2f/par an", DMV.MoyenneSeisme()));
+        Moy.setAlignment(Pos.CENTER);
         LPR.setText(DMV.LePlusRecent());
         MagnetudeMoy.setText(String.format("%.3f en moyenne sur la période donnée", DMV.MagnitudeMoyenne()));
         mainApp.UpShow();
@@ -110,10 +115,8 @@ public class View {
         if (!DejaOuvert) {
             Parent root = new FXMLLoader(getClass().getResource("AdvancedSettings.fxml")).load();
             StageAvances.setScene(new Scene(root));
-            StageAvances.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                    DejaOuvert = false;}});
+            StageAvances.setResizable(false);
+            StageAvances.setOnCloseRequest(event1 -> DejaOuvert = false);
             StageAvances.show();
             DejaOuvert = true;
         }
@@ -139,5 +142,23 @@ public class View {
         } else {
             LabelErreurParametre.setVisible(true);
         }
+    }
+    public void initialize() {
+        forceMin.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{0,2}([.]\\d{0,1})?")) {
+                forceMin.setText(oldValue);
+            }
+            if (newValue.indexOf('.') != newValue.lastIndexOf('.')) {
+                forceMin.setText(oldValue);
+            }
+        });
+        forceMax.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d{0,2}([.]\\d{0,1})?")) {
+                forceMax.setText(oldValue);
+            }
+            if (newValue.indexOf('.') != newValue.lastIndexOf('.')) {
+                forceMax.setText(oldValue);
+            }
+        });
     }
 }
