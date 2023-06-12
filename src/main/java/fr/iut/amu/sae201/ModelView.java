@@ -10,9 +10,6 @@ public class ModelView {
     ArrayList<String> Annee = new ArrayList<>();
     ArrayList<Integer> NombreParAnne = new ArrayList<>();
 
-    public ModelView() {
-
-    }
     public ArrayList<String> getAnnee () {
         return Annee;
     }
@@ -206,4 +203,5 @@ public class ModelView {
         }
         return (float) somme / NombreParAnne.size();
     }
+
 }

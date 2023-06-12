@@ -13,7 +13,6 @@ import com.gluonhq.maps.MapView;
 public class MainApp extends Application {
 
     private Stage primaryStage;
-
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -52,6 +51,7 @@ public class MainApp extends Application {
 
     // Affichage carte interactive
     public void showCarte(String fxmlFileName) throws Exception {
+
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName));
         Pane root = fxmlLoader.load();
         View controller = fxmlLoader.getController();
@@ -61,12 +61,13 @@ public class MainApp extends Application {
 
         MapView mapView = new MapView();
 
-        // Création point
+        // Pour centrer la carte sur la France
         MapPoint mapPoint = new MapPoint(47, 2);
 
         // Définition zoom et centrage carte
         mapView.setZoom(6);
         mapView.flyTo(0, mapPoint, 0.1);
+        // Appel de la méthode pour ajouter les points à la carte
 
         carte.getChildren().add(mapView);
         Scene scene = new Scene(root);
