@@ -136,7 +136,7 @@ public class View {
         } else {
             ValueDateDebut = dateDebut.getText();
             ValueDateFin = dateFin.getText();
-        } if (((ValueForceMin >= 0.0 && ValueForceMax <= 10.0) && ValueForceMin <= ValueForceMax) && ((ValueDateDebut == "" && ValueDateFin == "") || DMV.dateEstInferieure(ValueDateDebut, ValueDateFin))) {
+        } if (((ValueForceMin >= 0.1 && ValueForceMax <= 10.0) && ValueForceMin <= ValueForceMax) && ((ValueDateDebut == "" && ValueDateFin == "") || DMV.dateEstInferieure(ValueDateDebut, ValueDateFin))) {
             LabelErreurParametre.setVisible(false);
             StageAvances.close();
         } else {
