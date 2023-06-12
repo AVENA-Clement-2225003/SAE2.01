@@ -64,7 +64,7 @@ public class ModelView {
         while(donneesCSV.get(IndiceDebSelection).get(1) != DateDeb && Float.parseFloat(donneesCSV.get(IndiceDebSelection).get(10)) != IntensiteMin) {++IndiceDebSelection;}
         while(donneesCSV.get(IndiceFinSelection).get(1) != DateDeb && Float.parseFloat(donneesCSV.get(IndiceFinSelection).get(10)) != IntensiteMin) {--IndiceDebSelection;}
     }
-    public void SelectionEchantillonDonneesDashboard (String DateDeb, String DateFin, String Region) {
+    public void SelectionEchantillonDonneesDashboard (String DateDeb, String DateFin, String Region) { //29042004
         donneesCSV = CSV.getDonneesCSV();
         int IndiceDebSelection = 0;
         int IndiceFinSelection = donneesCSV.size();
