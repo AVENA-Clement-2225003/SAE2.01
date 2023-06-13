@@ -1,10 +1,8 @@
 package fr.iut.amu.sae201;
 
-import com.gluonhq.maps.MapLayer;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 import javafx.collections.ObservableList;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -16,17 +14,12 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.geometry.Point2D;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-
 import java.util.ArrayList;
 
 public class View {
@@ -81,19 +74,38 @@ public class View {
     TableView<ObservableList<String>> Tableau = new TableView<>();
     @FXML
     VBox CSVTab = new VBox();
+    @FXML
+    VBox CarteTab = new VBox();
 
+    /**
+     * @param mainApp
+     */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
 
+    /**
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void goToMainMenu(MouseEvent event) throws Exception {
         mainApp.showScene("MainMenu.fxml");
     }
+
+    /**
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void goToDashboard(MouseEvent event) throws Exception {
         mainApp.showScene("Dashboard.fxml");
     }
+
+    /**
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void Actu(MouseEvent event) throws Exception {
         DMV.SelectionEchantillonDonneesDashboard(DMV.TransformerDate(DateDeb.getText()), DMV.TransformerDate(DateFin.getText()), Region.getText());
@@ -122,25 +134,38 @@ public class View {
         mainApp.UpShow();
         //System.out.println("Passe");
     }
+
+    /**
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void goToCarte(MouseEvent event) throws Exception {
         mainApp.showCarte("Carte.fxml");
         for (ArrayList<String> ligne: DMV.RecupererTousLesPoints()) {
             MainApp.mapView.addLayer(new CustomCircleMarkerLayer(new MapPoint(Double.parseDouble(ligne.get(0)), Double.parseDouble(ligne.get(1)))));
         }
-
-
-        /*MapLayer mapLayer = new CustomCircleMarkerLayer(MainApp.mapPoint);
-        mapView.addLayer(mapLayer);
-        final MapPoint mapPoint = new MapPoint(45.0, 56.0);
-        final Circle circle = new Circle();
-        circle.setTranslateX(mapPoint.getLatitude());
-        circle.setTranslateY(mapPoint.getLongitude());*/
+        TableView<ObservableList<String>> Tableau = DMV.CreerTableauEvenement();
+        Tableau.setId("TableauEvent");
+        Tableau.setPrefSize(547.0, 240.0);
+        Node RTableau = CarteTab.lookup("#TableauEvent");
+        if (RTableau != null) {CarteTab.getChildren().remove(RTableau);}
+        CarteTab.getChildren().add(Tableau);
     }
+
+    /**
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {
         mainApp.showScene("CSVLoader.fxml");
     }
+
+    /**
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void FenetreParametres(MouseEvent event) throws Exception {
         if (!DejaOuvert) {
@@ -152,6 +177,11 @@ public class View {
             DejaOuvert = true;
         }
     }
+
+    /**
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void LoadCSV(MouseEvent event) throws Exception {
         M.chargerCsv();
@@ -163,6 +193,11 @@ public class View {
         if (RTableau != null) {CSVTab.getChildren().remove(RTableau);}
         CSVTab.getChildren().add(Tableau);
     }
+
+    /**
+     * @param event
+     * @throws Exception
+     */
     @FXML
     private void ValiderParametres (MouseEvent event) throws Exception { //Fonctionne sauf pour quitter la fenetre
         if ((forceMax.getText().isEmpty() && forceMin.getText().isEmpty())) {
@@ -185,6 +220,10 @@ public class View {
             LabelErreurParametre.setVisible(true);
         }
     }
+
+    /**
+     *
+     */
     public void initialize() {
         forceMin.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d{0,2}([.]\\d{0,1})?")) {

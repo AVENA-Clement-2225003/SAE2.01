@@ -12,7 +12,6 @@ public class Model {
     private FileChooser fileChooser = new FileChooser();
     private static ArrayList<ArrayList<String>> donneesCSV;
     private static ArrayList<String> Categories = new ArrayList<>();
-
     public Model() {
         donneesCSV = new ArrayList<>();
     }
@@ -24,6 +23,10 @@ public class Model {
         return Categories;
     }
 
+    /**
+     * @param ligne
+     * @return Retourne une liste qui contient tous les valeur d'une ligne séparé par une virgule et qui prend en charge les colonnes vides des CSV
+     */
     public ArrayList<String> RendreLigneConforme(String ligne) { //Vérification faire tous marche comme il faut
         ArrayList<String> liste = new ArrayList<>();
         String StrBuilder = "";
@@ -39,8 +42,9 @@ public class Model {
         return liste;
     }
 
-
-
+    /**
+     * @return Permet de charger un fichier CSV dans le code
+     */
     public void chargerCsv() {
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Fichiers CSV", "*.csv"));
         fileChooser.setTitle("Ouvrir un fichier CSV");

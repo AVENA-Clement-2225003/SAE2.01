@@ -3,10 +3,7 @@ package fr.iut.amu.sae201;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +21,11 @@ public class ModelView {
     public ArrayList<Integer> getNombreParAnne () {
         return NombreParAnne;
     }
+
+    /**
+     * @param str
+     * @return String
+     */
     public String ExtraireAnnee(String str) {
         String builderAnnee = "";
         for (char c : str.toCharArray()) {
@@ -34,6 +36,11 @@ public class ModelView {
         }
         return builderAnnee;
     }
+
+    /**
+     * @param IndiceDep
+     * @param IndiceFin
+     */
     public void setAnnee(int IndiceDep, int IndiceFin) {
         ArrayList<String> Annees = new ArrayList<>();
         for (int i = IndiceDep; i < IndiceFin; i++) {
@@ -44,6 +51,10 @@ public class ModelView {
         }
         Annee = Annees;
     }
+
+    /**
+     * @param annees
+     */
     public void setNombre(ArrayList<String> annees) {
         ArrayList<Integer> nombre = new ArrayList<>(annees.size());
         for (int i = 0; i < annees.size(); i++) {
@@ -62,6 +73,13 @@ public class ModelView {
         }
         NombreParAnne = nombre;
     }
+
+    /**
+     * @param DateDeb
+     * @param DateFin
+     * @param IntensiteMin
+     * @param IntensiteMax
+     */
     public void SelectionEchantillonDonneesCarte (String DateDeb, String DateFin, float IntensiteMin, float IntensiteMax) {
         donneesCSV = CSV.getDonneesCSV();
         int IndiceDebSelection = 0;
@@ -69,6 +87,12 @@ public class ModelView {
         while(donneesCSV.get(IndiceDebSelection).get(1) != DateDeb && Float.parseFloat(donneesCSV.get(IndiceDebSelection).get(10)) != IntensiteMin) {++IndiceDebSelection;}
         while(donneesCSV.get(IndiceFinSelection).get(1) != DateDeb && Float.parseFloat(donneesCSV.get(IndiceFinSelection).get(10)) != IntensiteMin) {--IndiceDebSelection;}
     }
+
+    /**
+     * @param DateDeb
+     * @param DateFin
+     * @param Region
+     */
     public void SelectionEchantillonDonneesDashboard (String DateDeb, String DateFin, String Region) { //29042004
         donneesCSV = CSV.getDonneesCSV();
         int IndiceDebSelection = 0;
@@ -94,7 +118,11 @@ public class ModelView {
         setNombre(Annee);
     }
 
-    String TransformerDate (String Date) {
+    /**
+     * @param Date
+     * @return String
+     */
+    public String TransformerDate (String Date) {
         char[] caracteres = Date.toCharArray();
         int debut = 0;
         int fin = caracteres.length - 1;
@@ -108,10 +136,18 @@ public class ModelView {
         }
         return new String(caracteres);
     }
+
+    /**
+     * @return String
+     */
     public String LePlusRecent() {
         ArrayList<String> Dernier = donneesCSV.get(donneesCSV.size()-1);
         return ("Le dernier incident date du " + Dernier.get(1) + " a " + Dernier.get(2) + ", qui a eu lieu dans les " + Dernier.get(4) + ", avec une intensité de " + Dernier.get(10) + "\naux coordonnées: " + Dernier.get(8) + " " + Dernier.get(9) + " aux format WGS");
     }
+
+    /**
+     * @return int
+     */
     public int Maximum() {
         int iMax = 0;
         for(int i = 0; i < NombreParAnne.size(); i+=1) {
@@ -121,6 +157,12 @@ public class ModelView {
         }
         return NombreParAnne.get(iMax);
     }
+
+    /**
+     * @param DateReference
+     * @param DateComparee
+     * @return boolean
+     */
     public boolean dateEstSuperieure(String DateReference, String DateComparee) {
         String[] elements1 = DateReference.split("/");
         String[] elements2 = DateComparee.split("/");
@@ -144,6 +186,11 @@ public class ModelView {
         return false;
     }
 
+    /**
+     * @param DateReference
+     * @param DateComparee
+     * @return boolean
+     */
     public boolean dateEstInferieure(String DateReference, String DateComparee) {
         String[] elements1 = DateReference.split("/");
         String[] elements2 = DateComparee.split("/");
@@ -167,6 +214,9 @@ public class ModelView {
         return false;
     }
 
+    /**
+     * @return float
+     */
     public float MagnitudeMoyenne() {
         int somme = 0;
         int compteur = 0;
@@ -179,6 +229,9 @@ public class ModelView {
         return (float) somme / compteur;
     }
 
+    /**
+     * @return ArrayList<ArrayList<String>>
+     */
     public ArrayList<ArrayList<String>> RecupererTousLesPoints() {
         ArrayList<ArrayList<String>> Coord = new ArrayList<>();
         String[] Temp = {"", ""};
@@ -195,55 +248,56 @@ public class ModelView {
         return Coord;
     }
 
-    public ArrayList<TableColumn> CreerColones() {
-        ArrayList<TableColumn> Tab = new ArrayList<>();
-        for (String Cat: CSV.getCategoriesCSV()) {
-            Tab.add(new TableColumn(Cat));
-        }
-        return Tab;
-    }
-    /*public ObservableList<String> CreerLignes(int NbColone) {
-        ObservableList<String> Tab = FXCollections.observableArrayList();
-        ObservableList<String> enregistrement = FXCollections.observableArrayList();
-        for (int i = 0; i < NbColone; i+=1) {
-            column.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().get(columnIndex)));
-            tableView.getColumns().add(column);
-        }
-        return enregistrement;
-    }*/
-
+    /**
+     * @return TableView<ObservableList<String>>
+     */
     public TableView<ObservableList<String>> CreerTableau() {
-        // Obtenir les données CSV et les catégories
         ArrayList<ArrayList<String>> donneesCSV = CSV.getDonneesCSV();
         ArrayList<String> categories = CSV.getCategoriesCSV();
-
-        // Créer la TableView
         TableView<ObservableList<String>> tableView = new TableView<>();
-
-        // Créer les colonnes en fonction des catégories
         for (int columnIndex = 0; columnIndex < categories.size(); columnIndex++) {
-            final int index = columnIndex; // Utilisation dans la lambda expression
-
+            final int index = columnIndex;
             TableColumn<ObservableList<String>, String> column = new TableColumn<>(categories.get(columnIndex));
-
-            // Utiliser PropertyValueFactory pour lier les cellules aux valeurs correspondantes dans les lignes
             column.setCellValueFactory(cellData -> {
                 ObservableList<String> rowData = cellData.getValue();
                 return new javafx.beans.property.ReadOnlyObjectWrapper<>(rowData.get(index));
             });
-
             tableView.getColumns().add(column);
         }
-
-        // Ajouter les données aux lignes de la TableView
         for (ArrayList<String> ligne : donneesCSV) {
             ObservableList<String> observableLigne = FXCollections.observableArrayList(ligne);
             tableView.getItems().add(observableLigne);
         }
-
         return tableView;
     }
 
+    /**
+     * @return TableView<ObservableList<String>>
+     */
+    public TableView<ObservableList<String>> CreerTableauEvenement() {
+        ArrayList<ArrayList<String>> donneesCSV = CSV.getDonneesCSV();
+        ArrayList<String> categories = CSV.getCategoriesCSV();
+        TableView<ObservableList<String>> tableView = new TableView<>();
+        int[] indicesSelectionnes = {0, 4, 3};
+        for (int columnIndex:indicesSelectionnes) {
+            final int index = columnIndex;
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(categories.get(columnIndex));
+            column.setCellValueFactory(cellData -> {
+                ObservableList<String> rowData = cellData.getValue();
+                return new javafx.beans.property.ReadOnlyObjectWrapper<>(rowData.get(index));
+            });
+            tableView.getColumns().add(column);
+        }
+        for (ArrayList<String> ligne : donneesCSV) {
+            ObservableList<String> observableLigne = FXCollections.observableArrayList(ligne.get(0), ligne.get(4), ligne.get(3));
+            tableView.getItems().add(observableLigne);
+        }
+        return tableView;
+    }
+
+    /**
+     * @return float
+     */
     public float Frequence() {
         ArrayList<Date> ListeDate = new ArrayList<>();
         String[] temp = {"", "", ""};
@@ -269,6 +323,9 @@ public class ModelView {
         return Somme/ListeEspaceDate.size();
     }
 
+    /**
+     * @return float
+     */
     public float MoyenneSeisme() {
         int somme = 0;
         for (int nbe: NombreParAnne) {

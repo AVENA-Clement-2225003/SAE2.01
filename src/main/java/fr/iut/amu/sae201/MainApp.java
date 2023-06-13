@@ -1,9 +1,7 @@
 package fr.iut.amu.sae201;
 
-import com.gluonhq.maps.MapLayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -16,16 +14,19 @@ public class MainApp extends Application {
     public static MapView mapView;
     public static MapPoint CentrageCarte;
     private Stage primaryStage;
+
+    /**
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Intégration données SisFrance");
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr/iut/amu/sae201/MainMenu.fxml"));
             Pane root = loader.load();
-            View controller = loader.getController(); // Renvoie une instance valide du contrôleur
-            controller.setMainApp(this); // Vérification si le contrôleur est null
+            View controller = loader.getController();
+            controller.setMainApp(this);
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -35,24 +36,28 @@ public class MainApp extends Application {
         this.primaryStage.setResizable(false);
     }
 
+    /**
+     * @param fxmlFileName
+     * @throws Exception
+     * Permet d'afficher la partie graphique
+     */
     public void showScene(String fxmlFileName) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
         Pane root = loader.load();
-        // Obtenir le contrôleur de la scène chargée
         View controller = loader.getController();
-        // Définir le contrôleur principal pour permettre la navigation entre les scènes
         controller.setMainApp(this);
-
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
     public void UpShow() {
         primaryStage.show();
     }
 
-    // Affichage carte interactive
+    /**
+     * @param fxmlFileName
+     * @throws Exception
+     */
     public void showCarte(String fxmlFileName) throws Exception {
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName));
@@ -71,6 +76,10 @@ public class MainApp extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
