@@ -147,6 +147,7 @@ public class ModelView {
 
     /**
      * @return int
+     * Permet de caluler le maximum de seismes par années
      */
     public int Maximum() {
         int iMax = 0;
@@ -216,6 +217,7 @@ public class ModelView {
 
     /**
      * @return float
+     * Calcule la magnitude moyenne
      */
     public float MagnitudeMoyenne() {
         int somme = 0;
@@ -231,6 +233,7 @@ public class ModelView {
 
     /**
      * @return ArrayList<ArrayList<String>>
+     * Permet de récuperer les coordonner des seismes du fichier CSV
      */
     public ArrayList<ArrayList<String>> RecupererTousLesPoints() {
         ArrayList<ArrayList<String>> Coord = new ArrayList<>();
@@ -273,6 +276,7 @@ public class ModelView {
 
     /**
      * @return TableView<ObservableList<String>>
+     * Permet de gérer le tableau et d'y entrer les données du fichier CSV choisi
      */
     public TableView<ObservableList<String>> CreerTableauEvenement() {
         ArrayList<ArrayList<String>> donneesCSV = CSV.getDonneesCSV();
@@ -297,6 +301,7 @@ public class ModelView {
 
     /**
      * @return float
+     * Calcule la fréquence
      */
     public float Frequence() {
         ArrayList<Date> ListeDate = new ArrayList<>();
@@ -325,6 +330,7 @@ public class ModelView {
 
     /**
      * @return float
+     * Cette fonction fait la moyenne des seismes
      */
     public float MoyenneSeisme() {
         int somme = 0;

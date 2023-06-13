@@ -10,6 +10,9 @@ import java.io.IOException;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 
+/** Classe du main
+ *  Elle représente la fenêtre JavaFX
+ */
 public class MainApp extends Application {
     public static MapView mapView;
     public static MapPoint CentrageCarte;
@@ -17,6 +20,7 @@ public class MainApp extends Application {
 
     /**
      * @param primaryStage
+     * Cette méthode initialise la scène JavaFX
      */
     @Override
     public void start(Stage primaryStage) {
@@ -57,6 +61,7 @@ public class MainApp extends Application {
     /**
      * @param fxmlFileName
      * @throws Exception
+     * Permet d'afficher la carte
      */
     public void showCarte(String fxmlFileName) throws Exception {
 

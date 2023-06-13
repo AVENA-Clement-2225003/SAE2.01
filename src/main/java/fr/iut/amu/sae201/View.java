@@ -79,6 +79,7 @@ public class View {
 
     /**
      * @param mainApp
+     * Permet d'attérir sur l'écran du menu au lancement de l'application
      */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -87,6 +88,7 @@ public class View {
     /**
      * @param event
      * @throws Exception
+     * Quand on clique sur le label "Menu" cela change la fenêtre actuelle par celle du menu
      */
     @FXML
     private void goToMainMenu(MouseEvent event) throws Exception {
@@ -96,6 +98,7 @@ public class View {
     /**
      * @param event
      * @throws Exception
+     * Quand on clique sur le label "Dashbord" cela change la fenêtre actuelle par celle du dashbord
      */
     @FXML
     private void goToDashboard(MouseEvent event) throws Exception {
@@ -105,6 +108,9 @@ public class View {
     /**
      * @param event
      * @throws Exception
+     * Quand on clique sur le bouton "Actualiser" cela fait,
+     * si un fichier csv est charger alors ça va actualiser les données
+     * sinon une fenêtre permettant de selectionner un fichier csv s'ouvrira
      */
     @FXML
     private void Actu(MouseEvent event) throws Exception {
@@ -138,6 +144,7 @@ public class View {
     /**
      * @param event
      * @throws Exception
+     * Quand on clique sur le label "Carte" cela change la fenêtre actuelle par celle de la carte
      */
     @FXML
     private void goToCarte(MouseEvent event) throws Exception {
@@ -156,6 +163,7 @@ public class View {
     /**
      * @param event
      * @throws Exception
+     * Quand on clique sur le label "Fichier CSV" cela change la fenêtre actuelle par celle du Fichier CSVn
      */
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {
@@ -165,6 +173,7 @@ public class View {
     /**
      * @param event
      * @throws Exception
+     * Quand on clique sur le label "Paramètres avancés" cela ouvre une nouvelle fenêtre qui permet de rentrer certains paramètres
      */
     @FXML
     private void FenetreParametres(MouseEvent event) throws Exception {
@@ -197,6 +206,7 @@ public class View {
     /**
      * @param event
      * @throws Exception
+     * Quand on appuie sur le bouton "Valider" cela va vérifié que les valeurs rentrer sont correctes puis prendre en compte ces valeurs
      */
     @FXML
     private void ValiderParametres (MouseEvent event) throws Exception { //Fonctionne sauf pour quitter la fenetre
@@ -222,7 +232,7 @@ public class View {
     }
 
     /**
-     *
+     * Cette fonction permet de ne pouvoir saisir dans les textfield (forceMin, forceMax, latitude, longitude) que des chiffres à virgule
      */
     public void initialize() {
         forceMin.textProperty().addListener((observable, oldValue, newValue) -> {
