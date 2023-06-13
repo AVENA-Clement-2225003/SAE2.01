@@ -204,7 +204,7 @@
                                  </VBox.margin>
                                         </Label>
                                         <Label text="Date début" />
-                                        <TextField id="DateDeb" promptText="jj/mm/aaaa" />
+                                        <TextField id="DateDeb" promptText="jj/mm/aaaa"/>
                                         <Label text="Date fin" />
                                         <TextField id="DateFin" promptText="jj/mm/aaaa" />
                                     </children>

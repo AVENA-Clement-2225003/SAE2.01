@@ -18,9 +18,18 @@ public class ModelView {
     ArrayList<String> Annee = new ArrayList<>();
     ArrayList<Integer> NombreParAnne = new ArrayList<>();
 
+    /**
+     * @return ArrayList<Integer>
+     * Renvoie Anne
+     */
     public ArrayList<String> getAnnee () {
         return Annee;
     }
+
+    /**
+     * @return ArrayList<Integer>
+     * Renvoie NombreParAnne
+     */
     public ArrayList<Integer> getNombreParAnne () {
         return NombreParAnne;
     }
@@ -342,5 +351,4 @@ public class ModelView {
         }
         return (float) somme / NombreParAnne.size();
     }
-
 }
