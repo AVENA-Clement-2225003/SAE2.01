@@ -21,7 +21,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.util.ArrayList;
-
+/**
+ * Gestion des boutons et zones de texte
+ */
 public class View {
     Model M = new Model();
     CategoryAxis xAxis = new CategoryAxis();

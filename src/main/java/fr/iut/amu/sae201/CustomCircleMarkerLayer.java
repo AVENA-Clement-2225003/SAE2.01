@@ -6,7 +6,9 @@ import javafx.geometry.Point2D;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
-/** Affiche un point rouge sur la carte créée par le Tuto */
+/**
+ * Affiche un point rouge sur la carte créée par le Tuto
+ */
 public class CustomCircleMarkerLayer extends MapLayer {
     private final MapPoint mapPoint;
     private final Circle circle;

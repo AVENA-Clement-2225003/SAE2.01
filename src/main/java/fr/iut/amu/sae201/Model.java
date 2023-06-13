@@ -8,6 +8,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Récupération des données du fichier CSV
+ */
 public class Model {
     private FileChooser fileChooser = new FileChooser();
     private static ArrayList<ArrayList<String>> donneesCSV;

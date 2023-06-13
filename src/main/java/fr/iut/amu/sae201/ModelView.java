@@ -9,6 +9,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Classement des données par année
+ */
 public class ModelView {
     Model CSV = new Model();
     ArrayList<ArrayList<String>> donneesCSV = CSV.getDonneesCSV();
