@@ -91,7 +91,7 @@
                                             <Font name="Carlito Italic" size="17.0" />
                                         </font>
                                     </Label>
-                                    <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie" />
+                                    <TextField fx:id="longitude" maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie" />
                                 </children>
                                 <GridPane.margin>
                                     <Insets top="10.0" />
@@ -107,7 +107,7 @@
                                             <Font name="Carlito Italic" size="17.0" />
                                         </font>
                                     </Label>
-                                    <TextField maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie" />
+                                    <TextField fx:id="latitude" maxWidth="10.0" minWidth="-Infinity" styleClass="MenuSaisie" />
                                 </children>
                                 <GridPane.margin>
                                     <Insets top="10.0" />

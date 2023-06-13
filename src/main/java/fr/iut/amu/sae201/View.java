@@ -42,6 +42,10 @@ public class View {
     private Stage StageAvances = new Stage();
     private MainApp mainApp;
     @FXML
+    private TextField longitude = new TextField();
+    @FXML
+    private TextField latitude = new TextField();
+    @FXML
     private TextField forceMax = new TextField();
     @FXML
     private TextField forceMin = new TextField();
@@ -196,6 +200,22 @@ public class View {
             }
             if (newValue.indexOf('.') != newValue.lastIndexOf('.')) {
                 forceMax.setText(oldValue);
+            }
+        });
+        latitude.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("-?\\d{0,2}(\\.\\d{0,2})?")) {
+                latitude.setText(oldValue);
+            }
+            if (newValue.indexOf('.') != newValue.lastIndexOf('.')) {
+                latitude.setText(oldValue);
+            }
+        });
+        longitude.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("-?\\d{0,3}(\\.\\d{0,2})?")) {
+                longitude.setText(oldValue);
+            }
+            if (newValue.indexOf('.') != newValue.lastIndexOf('.')) {
+                longitude.setText(oldValue);
             }
         });
     }
