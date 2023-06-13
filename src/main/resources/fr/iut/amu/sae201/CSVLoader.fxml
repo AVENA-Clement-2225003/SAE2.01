@@ -65,7 +65,10 @@
                 <Insets />
             </opaqueInsets>
          <children>
-            <Label onMouseClicked="#LoadCSV" text="Ouvrir un CSV" />
+            <Label onMouseClicked="#LoadCSV" text="Ouvrir un CSV">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></Label>
             <TableView fx:id="Tableau" prefHeight="617.0" prefWidth="1000.0">
               <columns>
               </columns>
