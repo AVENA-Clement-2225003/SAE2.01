@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Model {
     private FileChooser fileChooser = new FileChooser();
     private static ArrayList<ArrayList<String>> donneesCSV;
+    private static ArrayList<String> Categories = new ArrayList<>();
 
     public Model() {
         donneesCSV = new ArrayList<>();
@@ -19,7 +20,9 @@ public class Model {
     public ArrayList<ArrayList<String>> getDonneesCSV() {
         return donneesCSV;
     }
-
+    public ArrayList<String> getCategoriesCSV() {
+        return Categories;
+    }
 
     public ArrayList<String> RendreLigneConforme(String ligne) { //Vérification faire tous marche comme il faut
         ArrayList<String> liste = new ArrayList<>();
@@ -47,7 +50,7 @@ public class Model {
             try {
                 BufferedReader br = new BufferedReader(new FileReader(file));
                 String line;
-                br.readLine();
+                Categories = RendreLigneConforme(br.readLine());
                 while ((line = br.readLine()) != null) {
                     donneesCSV.add(RendreLigneConforme(line));
                 }

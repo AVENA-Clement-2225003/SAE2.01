@@ -1,7 +1,9 @@
 package fr.iut.amu.sae201;
 
+import com.gluonhq.maps.MapLayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -11,7 +13,8 @@ import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 
 public class MainApp extends Application {
-
+    public static MapView mapView;
+    public static MapPoint CentrageCarte;
     private Stage primaryStage;
     @Override
     public void start(Stage primaryStage) {
@@ -56,27 +59,19 @@ public class MainApp extends Application {
         Pane root = fxmlLoader.load();
         View controller = fxmlLoader.getController();
         controller.setMainApp(this);
-
+        System.setProperty("javafx.platform", "DESKTOP");
+        System.setProperty("http.agent", "Gluon Mobile/1.0.3");
         VBox carte = (VBox) root.lookup("#carte");
-
-        MapView mapView = new MapView();
-
-        // Pour centrer la carte sur la France
-        MapPoint mapPoint = new MapPoint(47, 2);
-
-        // Définition zoom et centrage carte
+        mapView = new MapView();
+        CentrageCarte = new MapPoint(47, 2);
         mapView.setZoom(6);
-        mapView.flyTo(0, mapPoint, 0.1);
-        // Appel de la méthode pour ajouter les points à la carte
-
+        mapView.flyTo(0, CentrageCarte, 0.1);
         carte.getChildren().add(mapView);
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
     public static void main(String[] args) {
         launch(args);
-
     }
 }

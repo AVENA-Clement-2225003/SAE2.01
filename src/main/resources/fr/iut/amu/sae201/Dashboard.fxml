@@ -216,7 +216,7 @@
                                     <children>
                               <VBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="184.0">
                                  <children>
-                                              <Button alignment="BOTTOM_RIGHT" mnemonicParsing="false" onMouseClicked="#Actu" prefHeight="24.0" prefWidth="87.0" text="Actualiser">
+                                              <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#Actu" prefHeight="24.0" prefWidth="87.0" text="Actualiser">
                                        <VBox.margin>
                                           <Insets bottom="5.0" right="10.0" />
                                        </VBox.margin></Button>

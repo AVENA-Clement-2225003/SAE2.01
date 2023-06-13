@@ -1,9 +1,14 @@
 package fr.iut.amu.sae201;
 
+import com.gluonhq.maps.MapLayer;
+import com.gluonhq.maps.MapPoint;
+import com.gluonhq.maps.MapView;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
@@ -11,11 +16,16 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import javafx.geometry.Point2D;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
 
@@ -52,6 +62,8 @@ public class View {
     @FXML
     Label Frequence = new Label();
     @FXML
+    MapView mapView = new MapView();
+    @FXML
     Label MaxLabel = new Label();
     @FXML
     Label Moy = new Label();
@@ -59,6 +71,12 @@ public class View {
     Label MagnetudeMoy = new Label();
     @FXML
     Label LPR = new Label();
+    @FXML
+    Label OpenCSV = new Label();
+    @FXML
+    TableView<ObservableList<String>> Tableau = new TableView<>();
+    @FXML
+    VBox CSVTab = new VBox();
 
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -103,12 +121,21 @@ public class View {
     @FXML
     private void goToCarte(MouseEvent event) throws Exception {
         mainApp.showCarte("Carte.fxml");
-        LabelErreurParametre.setVisible(false);
-        LabelErreurParametre.setText("cc");
+        for (ArrayList<String> ligne: DMV.RecupererTousLesPoints()) {
+            MainApp.mapView.addLayer(new CustomCircleMarkerLayer(new MapPoint(Double.parseDouble(ligne.get(0)), Double.parseDouble(ligne.get(1)))));
+        }
+
+
+        /*MapLayer mapLayer = new CustomCircleMarkerLayer(MainApp.mapPoint);
+        mapView.addLayer(mapLayer);
+        final MapPoint mapPoint = new MapPoint(45.0, 56.0);
+        final Circle circle = new Circle();
+        circle.setTranslateX(mapPoint.getLatitude());
+        circle.setTranslateY(mapPoint.getLongitude());*/
     }
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {
-        M.chargerCsv();
+        mainApp.showScene("CSVLoader.fxml");
     }
     @FXML
     private void FenetreParametres(MouseEvent event) throws Exception {
@@ -120,6 +147,17 @@ public class View {
             StageAvances.show();
             DejaOuvert = true;
         }
+    }
+    @FXML
+    private void LoadCSV(MouseEvent event) throws Exception {
+        M.chargerCsv();
+        TableView<ObservableList<String>> Tableau = DMV.CreerTableau();
+        Tableau.setId("Tableau");
+        Tableau.setPrefWidth(1000.0);
+        Tableau.setPrefHeight(617.0);
+        Node RTableau = CSVTab.lookup("#Tableau");
+        if (RTableau != null) {CSVTab.getChildren().remove(RTableau);}
+        CSVTab.getChildren().add(Tableau);
     }
     @FXML
     private void ValiderParametres (MouseEvent event) throws Exception { //Fonctionne sauf pour quitter la fenetre

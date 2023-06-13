@@ -1,7 +1,15 @@
 package fr.iut.amu.sae201;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
+import javafx.scene.control.TableView;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class ModelView {
@@ -169,6 +177,71 @@ public class ModelView {
             }
         }
         return (float) somme / compteur;
+    }
+
+    public ArrayList<ArrayList<String>> RecupererTousLesPoints() {
+        ArrayList<ArrayList<String>> Coord = new ArrayList<>();
+        String[] Temp = {"", ""};
+        if (CSV.getDonneesCSV().isEmpty()) {
+            CSV.chargerCsv();
+        }
+        for (ArrayList<String> ligne:CSV.getDonneesCSV()) {
+            if (!(ligne.get(8).isEmpty() || ligne.get(9).isEmpty())) {
+                Temp[0] = ligne.get(8);
+                Temp[1] = ligne.get(9);
+                Coord.add(new ArrayList<>(List.of(Temp)));
+            }
+        }
+        return Coord;
+    }
+
+    public ArrayList<TableColumn> CreerColones() {
+        ArrayList<TableColumn> Tab = new ArrayList<>();
+        for (String Cat: CSV.getCategoriesCSV()) {
+            Tab.add(new TableColumn(Cat));
+        }
+        return Tab;
+    }
+    /*public ObservableList<String> CreerLignes(int NbColone) {
+        ObservableList<String> Tab = FXCollections.observableArrayList();
+        ObservableList<String> enregistrement = FXCollections.observableArrayList();
+        for (int i = 0; i < NbColone; i+=1) {
+            column.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().get(columnIndex)));
+            tableView.getColumns().add(column);
+        }
+        return enregistrement;
+    }*/
+
+    public TableView<ObservableList<String>> CreerTableau() {
+        // Obtenir les données CSV et les catégories
+        ArrayList<ArrayList<String>> donneesCSV = CSV.getDonneesCSV();
+        ArrayList<String> categories = CSV.getCategoriesCSV();
+
+        // Créer la TableView
+        TableView<ObservableList<String>> tableView = new TableView<>();
+
+        // Créer les colonnes en fonction des catégories
+        for (int columnIndex = 0; columnIndex < categories.size(); columnIndex++) {
+            final int index = columnIndex; // Utilisation dans la lambda expression
+
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(categories.get(columnIndex));
+
+            // Utiliser PropertyValueFactory pour lier les cellules aux valeurs correspondantes dans les lignes
+            column.setCellValueFactory(cellData -> {
+                ObservableList<String> rowData = cellData.getValue();
+                return new javafx.beans.property.ReadOnlyObjectWrapper<>(rowData.get(index));
+            });
+
+            tableView.getColumns().add(column);
+        }
+
+        // Ajouter les données aux lignes de la TableView
+        for (ArrayList<String> ligne : donneesCSV) {
+            ObservableList<String> observableLigne = FXCollections.observableArrayList(ligne);
+            tableView.getItems().add(observableLigne);
+        }
+
+        return tableView;
     }
 
     public float Frequence() {
