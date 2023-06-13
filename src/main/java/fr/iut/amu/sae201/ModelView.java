@@ -112,6 +112,8 @@ public class ModelView {
         ArrayList<String> Dernier = donneesCSV.get(donneesCSV.size()-1);
         return ("Le dernier incident date du " + Dernier.get(1) + " a " + Dernier.get(2) + ", qui a eu lieu dans les " + Dernier.get(4) + ", avec une intensité de " + Dernier.get(10) + "\naux coordonnées: " + Dernier.get(8) + " " + Dernier.get(9) + " aux format WGS");
     }
+
+    /** Permet de caluler le maximum de seismes par années */
     public int Maximum() {
         int iMax = 0;
         for(int i = 0; i < NombreParAnne.size(); i+=1) {
@@ -167,6 +169,7 @@ public class ModelView {
         return false;
     }
 
+    /** Calcule la magnitude moyenne */
     public float MagnitudeMoyenne() {
         int somme = 0;
         int compteur = 0;
@@ -179,6 +182,7 @@ public class ModelView {
         return (float) somme / compteur;
     }
 
+    /** Permet de récuperer les coordonner des seismes du fichier CSV */
     public ArrayList<ArrayList<String>> RecupererTousLesPoints() {
         ArrayList<ArrayList<String>> Coord = new ArrayList<>();
         String[] Temp = {"", ""};
@@ -212,6 +216,8 @@ public class ModelView {
         return enregistrement;
     }*/
 
+
+    /** Permet de gérer le tableau et d'y entrer les données du fichier CSV choisi */
     public TableView<ObservableList<String>> CreerTableau() {
         // Obtenir les données CSV et les catégories
         ArrayList<ArrayList<String>> donneesCSV = CSV.getDonneesCSV();
@@ -244,6 +250,7 @@ public class ModelView {
         return tableView;
     }
 
+    /** Calcule la fréquence */
     public float Frequence() {
         ArrayList<Date> ListeDate = new ArrayList<>();
         String[] temp = {"", "", ""};
@@ -269,6 +276,7 @@ public class ModelView {
         return Somme/ListeEspaceDate.size();
     }
 
+    /** Cette fonction fait la moyenne des seismes */
     public float MoyenneSeisme() {
         int somme = 0;
         for (int nbe: NombreParAnne) {

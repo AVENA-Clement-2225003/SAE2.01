@@ -12,10 +12,15 @@ import java.io.IOException;
 import com.gluonhq.maps.MapPoint;
 import com.gluonhq.maps.MapView;
 
+/** Classe du main
+ *  Elle représente la fenêtre JavaFX
+ */
 public class MainApp extends Application {
     public static MapView mapView;
     public static MapPoint CentrageCarte;
     private Stage primaryStage;
+
+    /** Cette méthode initialise la scène JavaFX */
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -52,7 +57,7 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
-    // Affichage carte interactive
+    /** Permet d'afficher la carte */
     public void showCarte(String fxmlFileName) throws Exception {
 
         FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource(fxmlFileName));

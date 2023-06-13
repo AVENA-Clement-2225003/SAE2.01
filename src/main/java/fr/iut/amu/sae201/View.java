@@ -82,18 +82,27 @@ public class View {
     @FXML
     VBox CSVTab = new VBox();
 
+    /** Permet d'attérir sur l'écran du menu au lancement de l'application */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
     }
 
+    /** Quand on appuie sur le label "Menu" cela change la fenêtre actuelle par celle du menu */
     @FXML
     private void goToMainMenu(MouseEvent event) throws Exception {
         mainApp.showScene("MainMenu.fxml");
     }
+
+    /** Quand on appuie sur le label "Dashbord" cela change la fenêtre actuelle par celle du dashbord */
     @FXML
     private void goToDashboard(MouseEvent event) throws Exception {
         mainApp.showScene("Dashboard.fxml");
     }
+
+    /** Quand on appuie sur le bouton "Actualiser" cela fait,
+     * si un fichier csv est charger alors ça va actualiser les données
+     * sinon une fenêtre permettant de selectionner un fichier csv s'ouvrira
+     */
     @FXML
     private void Actu(MouseEvent event) throws Exception {
         DMV.SelectionEchantillonDonneesDashboard(DMV.TransformerDate(DateDeb.getText()), DMV.TransformerDate(DateFin.getText()), Region.getText());
@@ -122,6 +131,8 @@ public class View {
         mainApp.UpShow();
         //System.out.println("Passe");
     }
+
+    /** Quand on appuie sur le label "Carte" cela change la fenêtre actuelle par celle de la carte */
     @FXML
     private void goToCarte(MouseEvent event) throws Exception {
         mainApp.showCarte("Carte.fxml");
@@ -137,10 +148,14 @@ public class View {
         circle.setTranslateX(mapPoint.getLatitude());
         circle.setTranslateY(mapPoint.getLongitude());*/
     }
+
+    /** Quand on appuie sur le label "Fichier CSV" cela change la fenêtre actuelle par celle du Fichier CSV */
     @FXML
     private void goToCSVLoader(MouseEvent event) throws Exception {
         mainApp.showScene("CSVLoader.fxml");
     }
+
+    /** Quand on appuie sur le label "Paramètres avancés" cela ouvre une nouvelle fenêtre qui permet de rentrer certains paramètres */
     @FXML
     private void FenetreParametres(MouseEvent event) throws Exception {
         if (!DejaOuvert) {
@@ -163,6 +178,8 @@ public class View {
         if (RTableau != null) {CSVTab.getChildren().remove(RTableau);}
         CSVTab.getChildren().add(Tableau);
     }
+
+    /** Quand on appuie sur le bouton "Valider" cela va vérifié que les valeurs rentrer sont correctes puis prendre en compte ces valeurs */
     @FXML
     private void ValiderParametres (MouseEvent event) throws Exception { //Fonctionne sauf pour quitter la fenetre
         if ((forceMax.getText().isEmpty() && forceMin.getText().isEmpty())) {
@@ -185,6 +202,8 @@ public class View {
             LabelErreurParametre.setVisible(true);
         }
     }
+
+    /** Cette fonction permet de ne pouvoir saisir dans les textfield (forceMin, forceMax, latitude, longitude) que des chiffres à virgules */
     public void initialize() {
         forceMin.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d{0,2}([.]\\d{0,1})?")) {
